@@ -1,0 +1,163 @@
+
+\documentclass[a4paper,12pt]{article} % добавить leqno в [] для нумерации слева
+
+\usepackage[left=2cm,right=2cm,
+top=2cm,bottom=2cm,bindingoffset=0cm]{geometry}
+
+\usepackage{amsmath,amsfonts,amssymb,amsthm,mathtools} % AMS
+\usepackage{icomma} 
+\mathtoolsset{showonlyrefs=true} % Показывать номера только у тех формул, на которые есть \eqref{} в тексте.
+\usepackage{euscript}	 % Шрифт Евклид
+\usepackage{mathrsfs} % Красивый матшрифт
+\usepackage{enumitem}
+\usepackage{siunitx}
+\usepackage{tikz} % To generate the plot from csv
+\usepackage{pgfplots}
+
+%%% Заголовок
+\author{Kseniia Kasianova}
+\title{Microeconomics. Homework 1}
+\date{\today}
+
+\newcommand{\latinword}[1]{\textsf{\itshape #1}}%
+
+\begin{document}
+
+{\color{blue} \latinword{Begin to write your assignment here}}
+
+\noindent\makebox[\linewidth]{\rule{\textwidth}{0.4pt}}
+
+
+\subsection*{Problem 1}
+
+To understand if  David has rational preferences we need to define them first. We assume that David is rational if he aims to maximize his satisfaction (utility)
+ with given  prices of the goods and budget constraints. In order to do that 
+ his preferences should satisfy following axioms: they should be complete (David can compare any two bundles of paint)  and  transitive (if x  $ \succ $  y and y  $ \succ $  z, then x  $ \succ $  z) 
+
+
+From the text follows that David's preferences are:
+
+\begin{enumerate}
+	\item  Canary Yellow $ \succ $ Bumblebee Yellow
+	\item  Canary Yellow $ \succ $ Lime Yellow
+	\item  Canary Yellow $ \succ $ Crayola Yellow
+	\item  Sunrise Yellow $ \succ $  Canary Yellow
+	\item  School Bus Yellow $ \succ $  Canary Yellow
+	\item  Sunrise Yellow $ \succ $   School Bus Yellow
+\end{enumerate}
+
+That means, that for David $ U$(School Bus Yellow) $ > U$(Lime Yellow)
+since he ranked the colors that way (assuming transitivity of his preferences):
+Sunrise Yellow $ \succ $   School Bus Yellow   $ \succ $  Canary Yellow $ \succ $ Lime Yellow. 
+
+First, David acts rationally choosing  School Bus Yellow, since he the store is out of  
+Sunrise Yellow. 
+When David
+decides to repaint his house with Lime Yellow he choses the color that gives him smaller utility, also   spending  twice the money on  paint. Assuming that his preferences should stay the same with time we can say either he's  not maximizing his utility with given constraints or his preferences aren't transitive.  That means the statement " David has rational preferences" is 
+\textbf{False}.
+
+\subsection*{Problem 2}
+
+A consumer’s  utility function:
+\[ U(x_1, x_2) = \sqrt{x_1}  + x_2 \]
+ 
+ \begin{enumerate}
+ 	\item The marginal rate of substitution of the consumer at an arbitrary point $ (x^{*}_{1}, x^{*}_{2}) $
+ 	\[ MRS   =   \dfrac{U'_{x_1}}{U'_{x_2}}    \Big|_{(x^{*}_{1}, x^{*}_{2})}    =  \dfrac{\dfrac{1}{2\sqrt{x_1^{*}}  }}{1}    =  \dfrac{1}{2\sqrt{x_1^{*}}  } \]
+ 	where $ x^{*}_{1} > 0, x^{*}_{2} > 0 $
+ 	\item Suppose $ p_1 = p, p > 0 $ - price of the first good, $ p_2 = 1 $ - price of the second good, $ w > 0 $ -  consumer’s income.  
+ 		\newpage
+ 	 To obtain the optimal consumption
+ 	bundle of the consumer we solve consumer's optimization problem by maximizing his utility with given budget constraints: 
+ 	\begin{gather*}
+    Max \   U(x_1, x_2)  \\
+ 	s.t.: px_1 + x_2 = w 
+ 	\end{gather*}
+ 	The  Lagrangian for this problem: 
+ 	\[  \mathcal{L} =   \sqrt{x_1}  + x_2 + \lambda  ( w - px_1 - x_2  ) \]
+ 	FOC: 
+ 	\begin{equation*}
+ 	 \begin{cases}
+ 	\mathcal{L}'_{x_1 } =    \dfrac{1}{2\sqrt{x_1^{*}}  }  -   \lambda  p = 0 \\
+ 	\mathcal{L}'_{x_2 } =   1 -  \lambda = 0 \\
+ 	\mathcal{L}'_{\lambda} = w - px_1 - x_2 = 0 
+ 	\end{cases}
+ 	\end{equation*}
+ 	From which we derive:
+ 		\begin{gather*}
+ \lambda = 1\\
+   \dfrac{1}{2\sqrt{x_1^{*}}  }  =  p \Rightarrow  x^{*}_{1} = \dfrac{1}{4p^{2}}  \\
+ 	 x_{2}^{*} = w - px_1 = w - p\dfrac{1}{4p^{2}} =  w - \dfrac{1}{4p}   
+ 	\end{gather*}
+ There are two different cases depending on the amount of income: 
+\begin{itemize}
+	\item In case  $ w $ is relatively low:   $ w \leq  \dfrac{1}{4p} \Rightarrow  x^{*}_{2} = 0,  x^{*}_{1} = \dfrac{w}{p}   $
+		
+	\item In case  $ w $ is relatively high:   $ w \geq  \dfrac{1}{4p}  \Rightarrow  x^{*}_{1} = \dfrac{1}{4p^{2}},  x^{*}_{2} = w - \dfrac{1}{4p}) $
+\end{itemize}
+ 	
+ 		So  the optimal consumption
+ 	bundle of the consumer   is:
+ 	
+\begin{equation*}
+ (x^{*}_{1}, x^{*}_{2}) = 
+  \begin{cases}
+ (\dfrac{1}{4p^{2}};  w - \dfrac{1}{4p}) &  if \  w \geq  \dfrac{1}{4p} \\
+ (\dfrac{w}{p}; 0) & if\ w \leq  \dfrac{1}{4p}
+ \end{cases}   
+\end{equation*} 	 
+ 	
+
+ \end{enumerate}
+
+
+\subsection*{Problem 3}
+	Consider the three-good setting in which consumer has utility function:
+\[ u(x_1, x_2, x_3) = (x_{1} - b_{1})^{\alpha_{1}}(x_2 - b_2)^{\alpha_{2}}(x_3 - b_3)^{\alpha_{3}}, \alpha_{k} \geq 0, k = 1, 2, 3. \]
+
+\begin{enumerate}
+	\item  A monotonic transformation
+	of a utility function is a utility function that represents the same preferences as the
+	original utility function. The following utility functions represents the same preferences because of 
+	monotonic transformations:
+	
+\begin{itemize}
+	\item $ \tilde{u} (x_1, x_2, x_3) = \ln ( u(x_1, x_2, x_3))  $,  where $ \ln (x) $  is a strictly increasing function
+	\item $ \hat{u} (x_1, x_2, x_3) = f( u(x_1, x_2, x_3)) =  u(x_1, x_2, x_3)^{\dfrac{1}{(\alpha_1 + \alpha_2 + \alpha_3)}}  = (x_{1} - b_{1})^{\beta_{1}}(x_2 - b_2)^{\beta_{2}}(x_3 - b_3)^{\beta_{3}}, \beta_{k} = \dfrac{\alpha_k}{(\alpha_1 + \alpha_2 + \alpha_3)}, k =1,2,3 $,  where $ f(x) $  is a strictly increasing function
+\end{itemize}
+	\item Suppose $ w $ is the agent’s available income. Then  the agent’s budget constraint is: 
+	\[ p_1x_1 +  p_2x_2 + p_3x_3 = w   \]
+	where $ p_k $ - price of the $ k^{th} $ good
+	\item The agent’s utility maximization problem is:
+	\begin{gather*}
+	Max \   u(x_1, x_2, x_3)  \\
+	s.t.:  p_1x_1 +  p_2x_2 + p_3x_3 = w 
+	\end{gather*}
+	\item To  compute the agent’s demand functions for $ x_1, x_2, x_3 $ more easily   let's use variable substitution $ \tilde{x}_{k} = x_{k} - b_{k}, k =1,2,3 $, then $ \tilde{w} = w - b_1p_1 - b_2p_2 - b_3p_3 $. 
+	Also we should use monotonic transformation on agent’s utility function:  
+	$ \tilde{u} (x_1, x_2, x_3) = \ln ( u(x_1, x_2, x_3)) = \alpha_1 \ln (x_{1} - b_{1}) + \alpha_2 \ln (x_{2} - b_{2}) + \alpha_3 \ln (x_{3} - b_{3}) = \alpha_1 \ln \tilde{x}_{1} + \ln \tilde{x}_{2} + \ln \tilde{x}_{3} $. 
+	So we have same utility  maximization problem  written in new terms: 
+	\begin{gather*}
+	Max \   \tilde{u}(x_1, x_2, x_3)  \\
+	s.t.:  p_1\tilde{x}_1 +  p_2\tilde{x}_2 + p_3\tilde{x}_3 = \tilde{w} 
+	\end{gather*}
+		The  Lagrangian for this problem: 
+	\[  \mathcal{L} =  \alpha_1 \ln \tilde{x}_{1} + \ln \tilde{x}_{2} + \ln \tilde{x}_{3} + \lambda  ( \tilde{w} - p_1\tilde{x}_1 -  p_2\tilde{x}_2 - p_3\tilde{x}_3) \]
+	FOC: 
+ 	\begin{equation*}
+\begin{cases}
+\mathcal{L}'_{x_1 } =    \dfrac{\alpha_1}{\tilde{x}_{1} }  -   \lambda  p_1 = 0 \\
+\mathcal{L}'_{x_2 } =    \dfrac{\alpha_2}{\tilde{x}_{2} }  -   \lambda  p_2 = 0 \\
+\mathcal{L}'_{x_3 } =    \dfrac{\alpha_3}{\tilde{x}_{3} }  -   \lambda  p_3 = 0 \\
+\mathcal{L}'_{\lambda} = \tilde{w} - p_1\tilde{x}_1 -  p_2\tilde{x}_2 - p_3\tilde{x}_3 = 0 
+\end{cases}
+\end{equation*}	 
+	From which we derive that
+\[ \tilde{x}^{*}_{k} = \dfrac{\alpha_k \tilde{w}  }{p_k} \Rightarrow  x_{k} - b_{k}  =  \dfrac{\alpha_k (w - b_1p_1 - b_2p_2 - b_3p_3)   }{p_k}  , k = 1, 2, 3  \]		
+therefore 	demand functions for $ x_1, x_2, x_3 $ are:
+	\[ x_{k} = b_{k}  +  \dfrac{\alpha_k (w - \hat{w} )   }{p_k},  k = 1, 2, 3  \]
+	where $  \hat{w} = b_1p_1 + b_2p_2 + b_3p_3 $
+\end{enumerate}
+
+
+\end{document}

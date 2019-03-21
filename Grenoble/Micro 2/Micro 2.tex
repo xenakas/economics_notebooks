@@ -1,0 +1,172 @@
+
+\documentclass[a4paper,12pt]{article} % добавить leqno в [] для нумерации слева
+
+\usepackage[left=2cm,right=2cm,
+top=2cm,bottom=2cm,bindingoffset=0cm]{geometry}
+
+\usepackage{amsmath,amsfonts,amssymb,amsthm,mathtools} % AMS
+\usepackage{icomma} 
+\mathtoolsset{showonlyrefs=true} % Показывать номера только у тех формул, на которые есть \eqref{} в тексте.
+\usepackage{euscript}	 % Шрифт Евклид
+\usepackage{mathrsfs} % Красивый матшрифт
+\usepackage{enumitem}
+\usepackage{siunitx}
+\usepackage{tikz} % To generate the plot from csv
+\usepackage{pgfplots}
+
+\usepackage{multicol}
+\setlength{\columnsep}{1cm}
+
+
+%%% Заголовок
+\author{Kseniia Kasianova}
+\title{Microeconomics. Homework 1}
+\date{\today}
+
+\newcommand{\latinword}[1]{\textsf{\itshape #1}}%
+
+\begin{document}
+
+{\color{blue} \latinword{Begin to write your assignment here}}
+
+\noindent\makebox[\linewidth]{\rule{\textwidth}{0.4pt}}
+
+
+\subsection*{Problem 1}
+
+The Cobb-Douglas production function
+\[ f(z_1, z_2) = z_1^{\alpha_1} z_2^{\alpha_2} \]
+where for $ l = 1, 2 $, $ z_l $ is an input, and $ \alpha_l $ is a parameter such that $ \alpha_l > 0 $ .
+
+\begin{enumerate}
+	\item 	 The firm produces with decreasing returns to scale if: 
+ \begin{align*}
+	   f(\lambda z_1, \lambda z_2) &< \lambda f(z_1, z_2) \\
+	   (\lambda z_1)^{\alpha_1} (\lambda z_2)^{\alpha_2} &< \lambda z_1^{\alpha_1} z_2^{\alpha_2} \\
+	   \lambda^{\alpha_1 + \alpha_2} z_1^{\alpha_1} z_2^{\alpha_2} &< \lambda z_1^{\alpha_1} z_2^{\alpha_2} \\
+	   	   \lambda^{\alpha_1 + \alpha_2}  &< \lambda \\
+	   	   \alpha_1 + \alpha_2  &< 1
+ \end{align*}
+	 We assume  that this condition holds.
+	\item To calculate the conditional factor demand (on the quantity produced
+	$ q $) we need to solve following optimization problem: 
+		\begin{equation}
+	\begin{cases}
+	\arg \min_{(z_1,z_2) \in \mathbb{R}^2_+  }{z_1 w_1 + z_2 w_2} \\ 
+	s.t.: q =  z_1^{\alpha_1} z_2^{\alpha_2} 
+	\end{cases} 
+	\end{equation}
+	where $ w_1, w_2 $ are the prices of factors. 
+	 
+	The  Lagrangian for this problem: 
+	\[  \mathcal{L} =   z_1 w_1 + z_2 w_2 + \lambda  ( q - z_1^{\alpha_1} z_2^{\alpha_2} ) \]
+	FOC: 
+	\begin{align*}
+	 \begin{cases}
+	 \mathcal{L}'_{z_1 } & =  w_1  -  \lambda \alpha_1 z_1^{\alpha_1-1} z_2^{\alpha_2}  = 0    \\
+	\mathcal{L}'_{z_2 } & =  w_2  -  \lambda z_1^{\alpha_1} \alpha_2 z_2^{\alpha_2-1}  = 0  \\
+ \mathcal{L}'_{\lambda} & = q - z_1^{\alpha_1} z_2^{\alpha_2} = 0 
+\end{cases}
+		\end{align*}
+We get: 
+	\begin{align*}
+	\dfrac{w_1 }{w_2} & =  \dfrac{ \alpha_1 \hat{z}_1^{\alpha_1-1} \hat{z}_2^{\alpha_2} }{\hat{z}_1^{\alpha_1} \alpha_2 \hat{z}_2^{\alpha_2-1}} = \dfrac{ \alpha_1 \hat{z}_2}{ \alpha_2 \hat{z}_1} \Rightarrow \hat{z}_2 = \dfrac{a_2 w_1}{a_1 w_2}  \hat{z}_1  \\
+q & = \hat{z}_1^{\alpha_1} \hat{z}_2^{\alpha_2}  
+	\end{align*}
+	That is: 
+	\begin{equation}
+	\begin{split}
+	q  &= \hat{z}_1^{\alpha_1}  \left( \dfrac{a_2 w_1}{a_1 w_2}  \hat{z}_1 \right) ^{\alpha_2}  =  \hat{z}_1^{\alpha_1 + \alpha_2}  \left( \dfrac{a_2 w_1}{a_1 w_2}  \right) ^{\alpha_2}  \\ 
+	\hat{z}_1 &=  q^{\frac{1}{a_1+a_2}} \left( \dfrac{a_1 w_2}{a_2 w_1} \right) ^{\frac{a_2}{a_1+a_2}} 
+	\end{split}
+	\begin{split}
+ 		q  &= \left( \dfrac{a_1 w_2}{a_2 w_1}  \hat{z}_2 \right) ^{\alpha_1} \hat{z}_2^{\alpha_2}    =  \hat{z}_2^{\alpha_1 + \alpha_2}  \left( \dfrac{a_1 w_2}{a_2 w_1}  \right) ^{\alpha_1}  \\ 
+\hat{z}_2 &=  q^{\frac{1}{a_1+a_2}} \left( \dfrac{a_2 w_1}{a_1 w_2} \right) ^{\frac{a_1}{a_1+a_2}}	
+ \end{split}
+	\end{equation}
+	where $ \alpha_1 + \alpha_2  < 1 $
+	
+	\newpage
+	
+	The cost
+	function:
+\begin{multline*}
+  C(w_1, w_2, q) = w_1 \hat{z}_1  +  w_2 \hat{z}_2 \\ =   
+ w_1 
+ q^{\frac{1}{a_1+a_2}} \left( \dfrac{a_1 w_2}{a_2 w_1} \right) ^{\frac{a_2}{a_1+a_2}}  + w_2 q^{\frac{1}{a_1+a_2}} \left( \dfrac{a_2 w_1}{a_1 w_2} \right) ^{\frac{a_1}{a_1+a_2}} \\
+ 	=  w_1^{\frac{a_1}{a_1+a_2}} w_2^{\frac{a_2}{a_1+a_2}} 
+ q^{\frac{1}{a_1+a_2}} \left( \dfrac{a_1 }{a_2 } \right) ^{\frac{a_2}{a_1+a_2}}  + w_1^{\frac{a_1}{a_1+a_2}} w_2^{\frac{a_2}{a_1+a_2}} q^{\frac{1}{a_1+a_2}} \left( \dfrac{a_2 }{a_1 } \right) ^{\frac{a_1}{a_1+a_2}}	\\
+ = 	 w_1^{\frac{a_1}{a_1+a_2}} w_2^{\frac{a_2}{a_1+a_2}} 
+ q^{\frac{1}{a_1+a_2}} \left( \left( \dfrac{a_1 }{a_2 } \right) ^{\frac{a_2}{a_1+a_2}}  +  \left( \dfrac{a_2 }{a_1 } \right) ^{\frac{a_1}{a_1+a_2}} \right) 
+\end{multline*} 
+where $ \alpha_1 + \alpha_2  < 1 $
+
+	
+	
+	
+	 Profit function: 
+	 \[ \Pi(q) = pq - C(w_1, w_2, q)   = pq -  w_1^{\frac{a_1}{a_1+a_2}} w_2^{\frac{a_2}{a_1+a_2}} 
+	 q^{\frac{1}{a_1+a_2}} \left( \left( \dfrac{a_1 }{a_2 } \right) ^{\frac{a_2}{a_1+a_2}}  +  \left( \dfrac{a_2 }{a_1 } \right) ^{\frac{a_1}{a_1+a_2}} \right) \]
+	 where $ \alpha_1 + \alpha_2  < 1 $
+	 
+	 
+	 Supply function: 
+ \begin{align*}
+  p(q) &= MC(q) = C'_q = w_1^{\frac{a_1}{a_1+a_2}} w_2^{\frac{a_2}{a_1+a_2}} 
+  \dfrac{1}{a_1+a_2} q^{\frac{1-a_1-a_2}{a_1+a_2}} \left( \left( \dfrac{a_1 }{a_2 } \right) ^{\frac{a_2}{a_1+a_2}}  +  \left( \dfrac{a_2 }{a_1 } \right) ^{\frac{a_1}{a_1+a_2}} \right)  
+ \end{align*}
+where $ \alpha_1 + \alpha_2  < 1 $
+\end{enumerate}
+
+\subsection*{Problem 2}
+
+The production function
+\[ f(z_1,z_2) = (z_1^\rho + z_2^\rho)^{\frac{1}{\rho}} \]
+where $ \rho \leqslant 1 $
+
+\begin{enumerate}
+	\item The producer profit maximization problem: 
+				\begin{equation}
+	\max{\Pi(q) = pq - C(w_1, w_2, q)} 
+	\end{equation}
+	where $ w_1, w_2 $ are prices of inputs respectively.
+	\item 	To compute the demand for inputs we need to solve following optimization problem: 
+	\begin{equation}
+	\begin{cases}
+	\arg \min_{(z_1,z_2) \in \mathbb{R}^2_+  }{z_1 w_1 + z_2 w_2} \\ 
+	s.t.: q =  (z_1^\rho + z_2^\rho)^{\frac{1}{\rho}}
+	\end{cases} 
+	\end{equation}
+	The  Lagrangian for this problem: 
+	\[  \mathcal{L} =   z_1 w_1 + z_2 w_2 + \lambda  ( q - (z_1^\rho +  z_2^\rho)^{\frac{1}{\rho}} ) \]
+	FOC: 
+	\begin{align*}
+	\begin{cases}
+	\mathcal{L}'_{z_1 } & =  w_1  -  \lambda z_1^{\rho-1} (z_1^\rho+z_2^\rho)^{\frac{1}{\rho} - 1 }  = 0    \\
+	\mathcal{L}'_{z_2 } & =  w_2  -  \lambda z_2^{\rho-1} (z_1^\rho+z_2^\rho)^{\frac{1}{\rho} - 1 }  = 0  \\
+	\mathcal{L}'_{\lambda} & = q - (z_1^\rho + z_2^\rho)^{\frac{1}{\rho}} = 0 
+	\end{cases}
+	\end{align*}
+	We get: 
+	\begin{align*}
+	\dfrac{w_1 }{w_2} & =  \dfrac{ \hat{z}_1^{\rho-1} (\hat{z}_1^\rho+\hat{z}_2^\rho)^{\frac{1}{\rho} - 1 } }{\hat{z}_2^{\rho-1} (\hat{z}_1^\rho+\hat{z}_2^\rho)^{\frac{1}{\rho} - 1 } } = \dfrac{ \hat{z}_1^{\rho-1}  }{\hat{z}_2^{\rho-1}  } \Rightarrow \hat{z}_2 = \left( \dfrac{w_2} { w_1} \right) ^{\frac{1}{\rho}-1} \hat{z}_1  \\
+	q & = (\hat{z}_1^\rho + \hat{z}_2^\rho)^{\frac{1}{\rho}}   
+	\end{align*}
+	That is: 
+	\begin{align*}
+	q  &= \hat{z}_1^{\rho}  \left( 1 + \left( \dfrac{w_2}{w_1}   \right) ^{\frac{\rho}{\alpha}} \right) \\ 
+	\hat{z}_1 &=  q^{\frac{1}{\rho}}  \left( 1 + \left( \dfrac{w_2}{w_1}   \right) ^{\frac{\rho}{\alpha}} \right)^{-\frac{1}{\rho}} \\   
+	\hat{z}_2 &=  q^{\frac{1}{\rho}}  \left( 1 + \left( \dfrac{w_1}{w_2}   \right) ^{\frac{\rho}{\alpha}} \right)^{-\frac{1}{\rho}}
+			\end{align*}
+	\item The cost
+	function:
+	\begin{multline*}
+	C(w_1, w_2, q) = w_1 \hat{z}_1  +  w_2 \hat{z}_2 =   
+	w_1 
+	q^{\frac{1}{\rho}}  \left( 1 +  \left( \dfrac{w_2}{w_1}   \right) ^{\frac{\rho}{\alpha}} \right)^{-\frac{1}{\rho}}  + w_2 q^{\frac{1}{\rho}}  \left( 1 + \left( \dfrac{w_1}{w_2}   \right) ^{\frac{\rho}{\alpha}} \right)^{-\frac{1}{\rho}}  
+	\end{multline*} 
+	\end{enumerate}
+
+
+
+\end{document}
