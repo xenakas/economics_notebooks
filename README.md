@@ -1,1 +1,2 @@
-# economics_notebooks
+# Economics notebooks
+
