@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99999 (TeX Live 2019/dev/Debian) (preloaded format=xelatex 2018.11.7)  18 MAR 2019 14:03
+This is XeTeX, Version 3.14159265-2.6-0.99999 (TeX Live 2019/dev/Debian) (preloaded format=xelatex 2018.11.7)  1 APR 2019 03:57
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1448,7 +1448,11 @@ Package csquotes Info: Checking for multilingual support...
 Package csquotes Info: ... found 'babel' package.
 Package csquotes Info: Adjusting default style.
 Package csquotes Info: Redefining alias 'default' -> 'russian'.
-(./beamer.aux)
+(./beamer.aux
+
+LaTeX Warning: Label `key' multiply defined.
+
+)
 \openout1 = `beamer.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 26.
@@ -1610,182 +1614,146 @@ Package lastpage Info: Please have a look at the pageslts package at
 (lastpage)             https://www.ctan.org/pkg/pageslts
 (lastpage)             ! on input line 26.
  (./beamer.nav)
-Overfull \hbox (26.66103pt too wide) in paragraph at lines 26--26
- [][][][]  
- []
-
 File: logo1.png Graphic file (type bmp)
 <logo1.png>
 File: logo2.png Graphic file (type bmp)
 <logo2.png>
-[1
+ [1
 
 ]
-LaTeX Font Info:    Try loading font information for U+msa on input line 79.
- (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
+LaTeX Font Info:    Try loading font information for U+msa on input line 68.
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 79.
+LaTeX Font Info:    Try loading font information for U+msb on input line 68.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 
-Class beamer Warning: Frame text is shrunk by a factor of 3.0426 percent instea
-d of 3 percent on input line 79.
-
-
-Overfull \hbox (26.66103pt too wide) has occurred while \output is active
- [][][][]  
- []
+Class beamer Warning: Frame text is shrunk by a factor of 17.29126 percent inst
+ead of 3 percent on input line 68.
 
 [2
 
 ]
-Overfull \hbox (26.66103pt too wide) has occurred while \output is active
- [][][][]  
- []
+
+Class beamer Warning: Frame text is shrunk by a factor of 6.9519 percent instea
+d of 3 percent on input line 106.
 
 [3
 
-]
-Overfull \hbox (26.66103pt too wide) has occurred while \output is active
- [][][][]  
- []
+] [4
 
-[4
+] [5
 
 ]
-Overfull \hbox (26.66103pt too wide) has occurred while \output is active
- [][][][]  
- []
 
-[5
-
-]
-Overfull \hbox (26.66103pt too wide) has occurred while \output is active
- [][][][]  
- []
+Class beamer Warning: Frame text is shrunk by a factor of 3.44849 percent inste
+ad of 3 percent on input line 181.
 
 [6
 
-]
-Overfull \hbox (26.66103pt too wide) has occurred while \output is active
- [][][][]  
- []
-
-[7
+] [7
 
 ]
 Missing character: There is no γ in font cmmi10!
 
-Overfull \hbox (26.66103pt too wide) has occurred while \output is active
- [][][][]  
- []
+
+Class beamer Warning: Frame text is shrunk by a factor of 15.47394 percent inst
+ead of 3 percent on input line 237.
 
 [8
 
-]
-File: screenshot004.png Graphic file (type bmp)
-<screenshot004.png>
-
-Overfull \hbox (26.66103pt too wide) has occurred while \output is active
- [][][][]  
- []
-
-[9
+] [9
 
 ]
-Overfull \hbox (26.66103pt too wide) has occurred while \output is active
- [][][][]  
+Overfull \hbox (25.23485pt too wide) detected at line 297
+ []$[]  \OML/cmm/m/it/10.95 V[]\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 s[]\OT1/
+cmr/m/n/10.95 ) = [] []\OMS/cmsy/m/n/10.95 f\OML/cmm/m/it/10.95 ^^NE[]V[]\OT1/c
+mr/m/n/10.95 (\OML/cmm/m/it/10.95 s[]\OMS/cmsy/m/n/10.95 j^^A\OML/cmm/m/it/10.9
+5 ; e[] \OT1/cmr/m/n/10.95 = 1\OML/cmm/m/it/10.95 ; d[] \OT1/cmr/m/n/10.95 = 1)
+ \OMS/cmsy/m/n/10.95 ^^@ \OML/cmm/m/it/10.95 ^^M[]d[] \OMS/cmsy/m/n/10.95 ^^@ \
+OML/cmm/m/it/10.95 ^^M[]\OT1/cmr/m/n/10.95 (1 \OMS/cmsy/m/n/10.95 ^^@ \OML/cmm/
+m/it/10.95 d[]\OT1/cmr/m/n/10.95 )\OML/cmm/m/it/10.95 ;$ 
  []
+
+
+Overfull \hbox (25.76653pt too wide) detected at line 297
+ []$[]  \OML/cmm/m/it/10.95 V[]\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 s[]\OT1/
+cmr/m/n/10.95 ) = [] []\OMS/cmsy/m/n/10.95 f\OML/cmm/m/it/10.95 ^^NE[]V[]\OT1/c
+mr/m/n/10.95 (\OML/cmm/m/it/10.95 s[]\OMS/cmsy/m/n/10.95 j^^A\OML/cmm/m/it/10.9
+5 ; e[] \OT1/cmr/m/n/10.95 = 0\OML/cmm/m/it/10.95 ; d[] \OT1/cmr/m/n/10.95 = 1)
+ \OMS/cmsy/m/n/10.95 ^^@ \OML/cmm/m/it/10.95 ^^M[]d[] \OMS/cmsy/m/n/10.95 ^^@ \
+OML/cmm/m/it/10.95 ^^M[]\OT1/cmr/m/n/10.95 (1 \OMS/cmsy/m/n/10.95 ^^@ \OML/cmm/
+m/it/10.95 d[]\OT1/cmr/m/n/10.95 )\OML/cmm/m/it/10.95 ;$ 
+ []
+
+
+Class beamer Warning: Frame text is shrunk by a factor of 26.03912 percent inst
+ead of 3 percent on input line 297.
 
 [10
 
-]
-File: screenshot005.png Graphic file (type bmp)
-<screenshot005.png>
+] [11
 
-Overfull \hbox (26.66103pt too wide) has occurred while \output is active
- [][][][]  
- []
-
-[11
+] [12
 
 ]
-Overfull \hbox (26.66103pt too wide) has occurred while \output is active
- [][][][]  
- []
 
-[12
-
-]
-File: screenshot006.png Graphic file (type bmp)
-<screenshot006.png>
-
-Overfull \hbox (26.66103pt too wide) has occurred while \output is active
- [][][][]  
- []
+Class beamer Warning: Frame text is shrunk by a factor of 8.42896 percent inste
+ad of 3 percent on input line 397.
 
 [13
 
 ]
-File: screenshot007.png Graphic file (type bmp)
-<screenshot007.png>
-File: screenshot009.png Graphic file (type bmp)
-<screenshot009.png>
 
-
-Class beamer Warning: Frame text is shrunk by a factor of 26.97601 percent inst
-ead of 3 percent on input line 383.
-
-
-Overfull \hbox (26.66103pt too wide) has occurred while \output is active
- [][][][]  
- []
+Class beamer Warning: Frame text is shrunk by a factor of 9.86023 percent inste
+ad of 3 percent on input line 430.
 
 [14
-
-]
-Overfull \hbox (26.66103pt too wide) has occurred while \output is active
- [][][][]  
- []
-
-[15
 
 ]
 File: screenshot002.png Graphic file (type bmp)
 <screenshot002.png>
 
-Overfull \hbox (26.66103pt too wide) has occurred while \output is active
- [][][][]  
- []
+
+Class beamer Warning: Frame text is shrunk by a factor of 7.32574 percent inste
+ad of 3 percent on input line 454.
+
+[15
+
+]
+File: screenshot010.png Graphic file (type bmp)
+<screenshot010.png>
+File: screenshot011.png Graphic file (type bmp)
+<screenshot011.png>
+
+
+Class beamer Warning: Frame text is shrunk by a factor of 43.58063 percent inst
+ead of 3 percent on input line 483.
 
 [16
 
 ]
-File: screenshot008.png Graphic file (type bmp)
-<screenshot008.png>
+File: screenshot012.png Graphic file (type bmp)
+<screenshot012.png>
+File: screenshot013.png Graphic file (type bmp)
+<screenshot013.png>
 
-Overfull \hbox (26.66103pt too wide) has occurred while \output is active
- [][][][]  
- []
+
+Class beamer Warning: Frame text is shrunk by a factor of 28.33557 percent inst
+ead of 3 percent on input line 505.
 
 [17
 
 ]
-Overfull \hbox (26.66103pt too wide) has occurred while \output is active
- [][][][]  
- []
+
+Class beamer Warning: Frame text is shrunk by a factor of 30.70374 percent inst
+ead of 3 percent on input line 552.
 
 [18
-
-]
-Overfull \hbox (26.66103pt too wide) has occurred while \output is active
- [][][][]  
- []
-
-[19
 
 ]
 \tf@nav=\write6
@@ -1799,21 +1767,25 @@ Overfull \hbox (26.66103pt too wide) has occurred while \output is active
 
  
 AED: lastpage setting LastPage
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 515.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 515.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 556.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 556.
 (./beamer.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 515.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 515.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 556.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 556.
 Package rerunfilecheck Info: File `beamer.out' has not changed.
-(rerunfilecheck)             Checksum: 659E7FECF8AD2ECC6908906891551860.
+(rerunfilecheck)             Checksum: 74E92CA71A1AE633B1B4C8AF3928F932.
+
+
+LaTeX Warning: There were multiply-defined labels.
+
  ) 
 Here is how much of TeX's memory you used:
- 33270 strings out of 492962
- 645426 string characters out of 6135709
- 761683 words of memory out of 5000000
- 36729 multiletter control sequences out of 15000+600000
- 537474 words of font info for 59 fonts, out of 8000000 for 9000
+ 33334 strings out of 492962
+ 646951 string characters out of 6135709
+ 763645 words of memory out of 5000000
+ 36790 multiletter control sequences out of 15000+600000
+ 539197 words of font info for 70 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  56i,15n,89p,784b,559s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on beamer.pdf (19 pages).
+Output written on beamer.pdf (18 pages).
