@@ -1,0 +1,22 @@
+[0] Config.pm:304> INFO - This is Biber 2.12
+[0] Config.pm:307> INFO - Logfile is 'my_gost_metodichka.blg'
+[16] biber:315> INFO - === Sun Oct 27, 2019, 04:58:26
+[35] Biber.pm:371> INFO - Reading 'my_gost_metodichka.bcf'
+[110] Biber.pm:886> INFO - Using all citekeys in bib section 0
+[120] Biber.pm:4093> INFO - Processing section 0
+[127] Biber.pm:4254> INFO - Looking for bibtex format file 'diploma11.bib' for section 0
+[128] bibtex.pm:1512> INFO - LaTeX decoding ...
+[130] bibtex.pm:1329> INFO - Found BibTeX data source 'diploma11.bib'
+[131] Utils.pm:193> WARN - Duplicate entry key: 'ID7' in file 'diploma11.bib', skipping ...
+[132] Utils.pm:193> WARN - Entry 'ID2' (diploma11.bib): Invalid format '20.10.18' of date field 'date' - ignoring
+[132] Utils.pm:193> WARN - Entry 'ID5' (diploma11.bib): Invalid format '20.02.18' of date field 'date' - ignoring
+[133] Utils.pm:193> WARN - Entry 'ID7' (diploma11.bib): Invalid format '19.04.18' of date field 'date' - ignoring
+[134] Utils.pm:193> WARN - Entry 'ID1' (diploma11.bib): Invalid format '19.04.18' of date field 'date' - ignoring
+[134] Utils.pm:193> WARN - Entry 'ID3' (diploma11.bib): Invalid format '14.11.17' of date field 'date' - ignoring
+[142] UCollate.pm:68> INFO - Overriding locale 'ru-RU' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[142] UCollate.pm:68> INFO - Overriding locale 'ru-RU' defaults 'variable = shifted' with 'variable = non-ignorable'
+[142] Biber.pm:3921> INFO - Sorting list 'nty/global//global/global' of type 'entry' with template 'nty' and locale 'ru-RU'
+[142] Biber.pm:3927> INFO - No sort tailoring available for locale 'ru-RU'
+[149] bbl.pm:636> INFO - Writing 'my_gost_metodichka.bbl' with encoding 'UTF-8'
+[149] bbl.pm:739> INFO - Output to my_gost_metodichka.bbl
+[149] Biber.pm:110> INFO - WARNINGS: 6
