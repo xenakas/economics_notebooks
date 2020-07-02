@@ -1,0 +1,79 @@
+\headcommand {\slideentry {0}{0}{1}{1/1}{}{0}}
+\headcommand {\beamer@framepages {1}{1}}
+\headcommand {\beamer@sectionpages {1}{1}}
+\headcommand {\beamer@subsectionpages {1}{1}}
+\headcommand {\sectionentry {1}{General american derivative}{2}{General american derivative}{0}}
+\headcommand {\beamer@subsectionpages {2}{1}}
+\headcommand {\beamer@subsectionentry {0}{1}{1}{2}{Introduction}}
+\headcommand {\slideentry {1}{1}{1}{2/2}{Introduction}{0}}
+\headcommand {\beamer@framepages {2}{2}}
+\headcommand {\beamer@subsectionpages {2}{2}}
+\headcommand {\beamer@subsectionentry {0}{1}{2}{3}{Example}}
+\headcommand {\slideentry {1}{2}{1}{3/3}{Example}{0}}
+\headcommand {\beamer@framepages {3}{3}}
+\headcommand {\slideentry {1}{2}{2}{4/4}{Example}{0}}
+\headcommand {\beamer@framepages {4}{4}}
+\headcommand {\slideentry {1}{2}{3}{5/5}{Example}{0}}
+\headcommand {\beamer@framepages {5}{5}}
+\headcommand {\slideentry {1}{2}{4}{6/6}{Example}{0}}
+\headcommand {\beamer@framepages {6}{6}}
+\headcommand {\beamer@subsectionpages {3}{6}}
+\headcommand {\beamer@subsectionentry {0}{1}{3}{7}{Properties}}
+\headcommand {\slideentry {1}{3}{1}{7/7}{Properties}{0}}
+\headcommand {\beamer@framepages {7}{7}}
+\headcommand {\beamer@subsectionpages {7}{7}}
+\headcommand {\beamer@subsectionentry {0}{1}{4}{8}{Proof of theorem}}
+\headcommand {\slideentry {1}{4}{0}{8/8}{Properties}{0}}
+\headcommand {\beamer@framepages {8}{8}}
+\headcommand {\slideentry {1}{4}{1}{9/9}{Properties}{0}}
+\headcommand {\beamer@framepages {9}{9}}
+\headcommand {\slideentry {1}{4}{2}{10/10}{Properties}{0}}
+\headcommand {\beamer@framepages {10}{10}}
+\headcommand {\beamer@subsectionpages {7}{10}}
+\headcommand {\beamer@subsectionentry {0}{1}{5}{11}{Algorithm for path-dependent derivative security price}}
+\headcommand {\slideentry {1}{5}{1}{11/11}{Algorithm for path-dependent derivative security price}{0}}
+\headcommand {\beamer@framepages {11}{11}}
+\headcommand {\beamer@subsectionpages {11}{11}}
+\headcommand {\beamer@subsectionentry {0}{1}{6}{12}{Proof of theorem}}
+\headcommand {\slideentry {1}{6}{1}{12/12}{Proof of theorem}{0}}
+\headcommand {\beamer@framepages {12}{12}}
+\headcommand {\beamer@subsectionpages {12}{12}}
+\headcommand {\beamer@subsectionentry {0}{1}{7}{13}{Replication of path-dependent American derivatives}}
+\headcommand {\slideentry {1}{7}{1}{13/13}{Replication of path-dependent American derivatives}{0}}
+\headcommand {\beamer@framepages {13}{13}}
+\headcommand {\slideentry {1}{7}{2}{14/14}{Replication of path-dependent American derivatives}{0}}
+\headcommand {\beamer@framepages {14}{14}}
+\headcommand {\slideentry {1}{7}{3}{15/15}{Replication of path-dependent American derivatives}{0}}
+\headcommand {\beamer@framepages {15}{15}}
+\headcommand {\slideentry {1}{7}{4}{16/16}{Replication of path-dependent American derivatives}{0}}
+\headcommand {\beamer@framepages {16}{16}}
+\headcommand {\beamer@subsectionpages {13}{16}}
+\headcommand {\beamer@subsectionentry {0}{1}{8}{17}{Optimal exercise}}
+\headcommand {\slideentry {1}{8}{1}{17/17}{Optimal exercise}{0}}
+\headcommand {\beamer@framepages {17}{17}}
+\headcommand {\slideentry {1}{8}{2}{18/18}{Optimal exercise}{0}}
+\headcommand {\beamer@framepages {18}{18}}
+\headcommand {\slideentry {1}{8}{3}{19/19}{Optimal exercise}{0}}
+\headcommand {\beamer@framepages {19}{19}}
+\headcommand {\beamer@sectionpages {2}{19}}
+\headcommand {\beamer@subsectionpages {17}{19}}
+\headcommand {\sectionentry {2}{American Call Option}{20}{American Call Option}{0}}
+\headcommand {\beamer@subsectionpages {20}{19}}
+\headcommand {\beamer@subsectionentry {0}{2}{1}{20}{Introduction}}
+\headcommand {\slideentry {2}{1}{1}{20/20}{Introduction}{0}}
+\headcommand {\beamer@framepages {20}{20}}
+\headcommand {\slideentry {2}{1}{2}{21/21}{Introduction}{0}}
+\headcommand {\beamer@framepages {21}{21}}
+\headcommand {\beamer@subsectionpages {20}{21}}
+\headcommand {\beamer@subsectionentry {0}{2}{2}{22}{Jensen's inequality }}
+\headcommand {\slideentry {2}{2}{1}{22/22}{Jensen's inequality }{0}}
+\headcommand {\beamer@framepages {22}{22}}
+\headcommand {\beamer@subsectionpages {22}{22}}
+\headcommand {\beamer@subsectionentry {0}{2}{3}{23}{Value of Call option}}
+\headcommand {\slideentry {2}{3}{1}{23/23}{Value of Call option}{0}}
+\headcommand {\beamer@framepages {23}{23}}
+\headcommand {\beamer@partpages {1}{23}}
+\headcommand {\beamer@subsectionpages {23}{23}}
+\headcommand {\beamer@sectionpages {20}{23}}
+\headcommand {\beamer@documentpages {23}}
+\headcommand {\gdef \inserttotalframenumber {23}}

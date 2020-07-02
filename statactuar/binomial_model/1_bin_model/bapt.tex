@@ -1,0 +1,78 @@
+
+\documentclass[a4paper,12pt]{article} % добавить leqno в [] для нумерации слева
+
+\usepackage[left=2cm,right=2cm,
+top=2cm,bottom=2cm,bindingoffset=0cm]{geometry}
+
+\usepackage{amsmath,amsfonts,amssymb,amsthm,mathtools} % AMS
+\usepackage{icomma} 
+\mathtoolsset{showonlyrefs=true} % Показывать номера только у тех формул, на которые есть \eqref{} в тексте.
+\usepackage{euscript}	 % Шрифт Евклид
+\usepackage{mathrsfs} % Красивый матшрифт
+\usepackage{enumitem}
+\usepackage{siunitx}
+\usepackage{tikz} % To generate the plot from csv
+\usepackage{pgfplots}
+
+%%% Заголовок
+\author{Kseniia Kasianova}
+\title{Macroeconomics. Homework 1}
+\date{\today}
+
+\newcommand{\latinword}[1]{\textsf{\itshape #1}}%
+
+\begin{document}
+
+{ \latinword{Group 6: Kasianova, Mukhtarov, Shakhurina, Shulyak}}
+
+\noindent\makebox[\linewidth]{\rule{\textwidth}{0.4pt}}
+
+
+\section*{Home Assignment \#1.}
+\subsection*{Problem 1}
+
+$$X_1 = \Delta_0 S_0 \left( \dfrac{S_1-S_0}{S_0} - r \right)− r + (1 + r)X_0$$
+
+Then
+
+$$X_1 (H) − (1 + r)X_0 = \Delta_0 S_0 [u − (1 + r)];$$
+
+$$X_1 (T ) − (1 + r)X_0 = \Delta_0 S_0 [d − (1 + r)].$$
+
+We assume that following condition holds $d < 1 + r < u$, then $S_0 [u − (1 + r)] > 0$ and $S_0 [d − (1 + r)]<0$. 
+
+So
+
+$$X_1 (H) > (1+r)X_0 \Rightarrow X_1 (T ) < (1+r)X_0; $$
+
+$$X_1 (T ) > (1+r)X_0 \Rightarrow X_1 (H) < (1+r)X_0. $$
+
+And if   $X_0 = 0$
+
+$$X_1 (H) > 0 \Rightarrow X_1 (T ) < 0; $$
+
+$$X_1 (T ) > 0 \Rightarrow X_1 (H) < 0.  $$
+
+
+
+\subsection*{Problem 2}
+
+
+
+
+$$X_1 (u) = \Delta_0 * 8 + \Gamma_0 * 3 - 5/4 (4 \Delta_0 + 1.20\Gamma_0 ) = 3 \Delta_0 + 1.5\Gamma_0$$ 
+
+$$X_1 (d) = \Delta_0 * 2  - 5/4 (4 \Delta_0 + 1.20\Gamma_0 ) = - 3 \Delta_0 - 1.5\Gamma_0 = - X_1 (u) $$ 
+
+So if $Pr(X_1>0)>0 \Rightarrow Pr(X_1<0)>0 $ and there is no arbitrage if the time-zero price of the option is 1.20.  
+
+
+\subsection*{Problem 3}
+
+
+$$ V_0 = \dfrac{1}{1+r} \left( \dfrac{1+r-d}{u-d} S_1(H)  +   \dfrac{u-1-r}{u-d} S_1(T)  \right)  = \dfrac{ S_0}{1+r} \left( \dfrac{1+r-d}{u-d} u  +   \dfrac{u-1-r}{u-d} d    \right) = S_0 $$
+
+
+
+
+\end{document}

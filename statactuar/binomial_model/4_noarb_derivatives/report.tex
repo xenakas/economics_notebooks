@@ -1,0 +1,112 @@
+
+\documentclass[a4paper,12pt]{article} % добавить leqno в [] для нумерации слева
+
+\usepackage[left=2cm,right=2cm,
+top=2cm,bottom=2cm,bindingoffset=0cm]{geometry}
+
+\usepackage{amsmath,amsfonts,amssymb,amsthm,mathtools} % AMS
+\usepackage{icomma} 
+\mathtoolsset{showonlyrefs=true} % Показывать номера только у тех формул, на которые есть \eqref{} в тексте.
+\usepackage{euscript}	 % Шрифт Евклид
+\usepackage{mathrsfs} % Красивый матшрифт
+\usepackage{enumitem}
+\usepackage{siunitx}
+\usepackage{tikz} % To generate the plot from csv
+\usepackage{pgfplots}
+
+%%% Заголовок
+\author{Kseniia Kasianova}
+\title{Macroeconomics. Homework 1}
+\date{\today}
+
+\newcommand{\latinword}[1]{\textsf{\itshape #1}}%
+
+\begin{document}
+
+{ \latinword{Group 6: Kasianova, Mukhtarov, Shakhurina, Shulyak}}
+
+\noindent\makebox[\linewidth]{\rule{\textwidth}{0.4pt}}
+
+
+\section*{A Continuous-Time Model for the	Securities Market}
+
+\subsection*{Self-Financing Portfolio and No-Arbitrage}
+
+Suppose that the set of time epochs consists of the closed interval $[0, T]$,
+where $T < \infty$ and the time $t = 0$ denotes the current time. We consider a financial market in which there are available $n + 1$ financial
+securities, the one numbered $0$ being a risk-free security (for example, default-
+free money-market account) and the others numbered $1, 2, . . . , n$ being risky
+securities (for example, stocks), where $n \geq 1$.
+Let $S_i(t)$ denote the time-$t$ price of security $i$, where the current prices
+$S_i(0)$ are known by all the investors in the market. The security price process
+denoted by $\{S(t); 0 \leq t \leq T\}$ (or $\{S(t)\}$ for short), where
+
+$$S(t) = (S_0(t), S_1(t), . . . , S_n(t))', 0 \leq t \leq T$$
+
+is a vector-valued stochastic process in continuous time.  $\theta_i(t)$ denotes the number of security $i$
+possessed at time $t$, $0 \leq t \leq T$, and $\theta(t) = (\theta_0(t), \theta_1(t), . . . , \theta_n(t))'$ is the
+portfolio at that time. Also, $d_i(t)$ denotes the dividend rate paid at time $t$
+by security $i$, while the cumulative dividend paid by security $i$ until time $t$ is
+denoted by $D_i(t) = \int^t_0 d_i(s)ds$.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Throughout this chapter, we fix a probability space $(\Omega, \mathcal{F}, \mathbb{P})$ equipped with
+filtration $\{\mathcal{F}_t; 0 \leq t \leq T\}$, where $\mathcal{F}_t$ denotes the information about security
+prices available in the market at time $t$. For example, $\mathcal{F}_t$ is the smallest $\sigma$-field
+generated from $\{S(u); u \leq t\}$. However, $\mathcal{F}_t$ can include any information as far 
+as the time-$t$ prices of the securities can be known based on the information.
+That is, the prices $S_i(t)$ are measurable with respect to $\mathcal{F}_t$.
+
+Recall that, when determining the portfolio $\theta(t)$, we cannot use the future
+information about the price processes. This restriction has been formulated
+by predictability of the portfolio process in the discrete-time setting. As we
+know, an adapted process $\{X(t)\}$ is predictable if $X(t)$ is left-
+continuous in time $t$. Hence, as for the discrete-time case, we assume that while
+the price process $\{S(t)\}$ and the dividend processes $\{d_i(t)\}$ in the continuous-time securities market are adapted to the filtration $\{\mathcal{F}_t\}$, the portfolio process
+$\{\theta(t)\}$ is predictable with respect to $\{\mathcal{F}_t\}$.
+The value process $\{V (t)\}$ in the continuous-time setting is similar to the one 
+given in the discrete-time case. However,  in order to define self-financing portfolios, recall that, in order to derive the desired continuous-
+time model from the discrete-time counterpart, it is enough to replace the
+difference by a differential and the sum by an integral.
+
+%%%%%%%%%%%%%%%%%%%%%%
+
+For a portfolio process $\{\theta(t)\}$, let
+$$V(t)=\sum_{i=0}^{n}\theta_i(t)S_i(t),0\le t\le T.\text{ }(14.1)$$
+The process $\{V(t)\}$ is called the value process. Note the difference between
+(14.1) and (6.2). In particular, in the continuous-time case, the dividend rates
+do not appear in the portfolio value (14.1).
+
+Now, note that Equation (6.6) can be rewritten as
+$$dV(t)=\sum_{i=0}^{n}\theta_i(t)\{dS_i(t)+d_i(t)dt\},0\le t\le T.\text{ }(14.2)$$
+As in Section 6.2, let us define the time-$t$ gain obtained from security $i$ by
+$$G_i(t)=S_i(t)+D_i(t),i=0,1,\ldots,n,$$
+or, in the differential form,
+$$dG_i(t) = dS_i(t) + d_i(t)dt,$$
+%%%%%%%%%%%%%%%%%%
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\textbf{Definition}
+
+A portfolio process $\left \{ \theta (t) \right \}$ is said to be self-financing if the time-t portfolio value V(t) is represented by $V(t) = V(0) + \sum_{i=0}^{n}\int_{0}^{t}\theta _i(s)\mathrm{d}S_i(s),\quad 0\leqslant t\leqslant T$. 
+
+
+A contingent claim X is said to be attainable if there exists some self-financing trading strategy $\left \{ \theta (t); 0\leqslant t\leqslant T \right \}$, called the replicating portfolio, such that $V(T) = X$. Hence, the attainable claim X is represented as 
+
+
+$X = V(0) + \sum_{i=0}^{n}\int_{0}^{T}\theta _i(t)\mathrm{d}G_i(t)\quad(\ast)$
+
+
+for some self-financing portfolio process $\left \{ \theta (t) \right \}$. In this case, the portfolio process is said to generate the contingent claim X.
+
+
+The definition of arbitrage opportunities is unchanged in the continuous-time setting. That is, an arbitrage opportunity (a risk-free way of making profit) is the existence of some self-financing trading strategy $\left \{ \theta (t) \right \}$ such that (a) $V(0) = 0$, and (b) $V(T)\geqslant 0$ almost surely (a.s.) and $V(T)> 0$ with positive probability. For the securities market model to be sensible from the economic standpoint, there cannot exist any arbitrage opportunities.
+
+The no-arbitrage pricing theorem is also unchanged in the continuous-time case. That is, for a given contingent claim X, suppose that there exists a replicating trading strategy $\left \{ \theta (t) \right \}$ given by $(\ast)$. If there are no arbitrage opportunities in the market, V(0) is the correct value of the contingent claim X.
+
+\end{document}

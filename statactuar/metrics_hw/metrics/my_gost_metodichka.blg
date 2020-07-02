@@ -1,0 +1,9 @@
+[0] Config.pm:304> INFO - This is Biber 2.12
+[0] Config.pm:307> INFO - Logfile is 'my_gost_metodichka.blg'
+[18] biber:315> INFO - === Thu Feb 13, 2020, 15:37:29
+[37] Biber.pm:371> INFO - Reading 'my_gost_metodichka.bcf'
+[104] Biber.pm:889> INFO - Found 0 citekeys in bib section 0
+[109] Utils.pm:193> WARN - The file 'my_gost_metodichka.bcf' does not contain any citations!
+[115] bbl.pm:636> INFO - Writing 'my_gost_metodichka.bbl' with encoding 'UTF-8'
+[115] bbl.pm:739> INFO - Output to my_gost_metodichka.bbl
+[115] Biber.pm:110> INFO - WARNINGS: 1

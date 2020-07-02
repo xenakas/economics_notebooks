@@ -1,0 +1,249 @@
+
+\documentclass[a4paper,12pt]{article} % добавить leqno в [] для нумерации слева
+
+\usepackage[left=2cm,right=2cm,
+top=2cm,bottom=2cm,bindingoffset=0cm]{geometry}
+
+\usepackage[russian, english]{babel} % выбор языка для документа
+\usepackage[utf8]{inputenc} % задание utf8 кодировки исходного tex файла
+\usepackage[X2,T2A]{fontenc}        % кодировка
+
+\usepackage{fontspec}         % пакет для подгрузки шрифтов
+\setmainfont{Times New Roman}       % задаёт основной шрифт документа
+
+
+\usepackage{amsmath,amsfonts,amssymb,amsthm,mathtools} % AMS
+\usepackage{icomma} 
+\mathtoolsset{showonlyrefs=true} % Показывать номера только у тех формул, на которые есть \eqref{} в тексте.
+\usepackage{euscript}	 % Шрифт Евклид
+\usepackage{mathrsfs} % Красивый матшрифт
+\usepackage{enumitem}
+\usepackage{siunitx}
+\usepackage{tikz} % To generate the plot from csv
+\usepackage{pgfplots}
+
+%%% Заголовок
+
+\newcommand{\latinword}[1]{\textsf{\itshape #1}}%
+
+\begin{document}
+
+{ Касьянова Ксения, СМАР19. Домашняя работа №1. }
+
+\noindent\makebox[\linewidth]{\rule{\textwidth}{0.4pt}}
+
+
+\section*{Тема 1: сигма – алгебры.}
+\subsection*{Задача 1}
+
+Пусть $\mathcal{F}$ - сигма-алгебра, $A$ и $B$ – две совокупности
+подмножеств, содержащиеся в $F$, причем $A \subset B$.
+
+По определению сигма-алгебры:
+
+- если $B \in  \mathcal{F} \Rightarrow B^c \in  \mathcal{F} $; 
+
+- $A \cup B^c \in \mathcal{F}  \Rightarrow  (A \cup B^c)^c \in \mathcal{F}  \Rightarrow  A^c \cap B \in \mathcal{F} \Rightarrow  B\backslash A \in \mathcal{F}  $ 
+
+\subsection*{Задача 2}
+
+\begin{equation}\label{key}
+\mathbb{I}_{B} - \mathbb{I}_{A \cap B} = \begin{cases} 1,  x \in B \\0,  x \notin B   
+\end{cases} - \begin{cases} 1,  x \in A \cap B \\0,  x \notin A \cap B   
+\end{cases}  = \begin{cases} 1,  (x \in B) \  \wedge \  (x \notin A \cap B)  \\0, ((x \in B)  \wedge  (x \in A \cap B )  ) \vee ( (x \notin B ) \wedge  (x \notin A \cap B )  ) = \\ -1, (x \notin B ) \wedge (x \in A \cap B ) 
+\end{cases}  
+\end{equation}
+
+\begin{equation}\label{key}
+ = \begin{cases} 1,  x \in B\backslash A \\0,  x \notin B\backslash A 
+\end{cases}  = \mathbb{I}_{B\backslash A}
+\end{equation}
+
+
+
+\subsection*{Задача 3}
+
+Пусть  $C$ и $D$ принадлежат сигма − алгебре $\mathcal{F}$.
+
+Тогда по определению сигма-алгебры:
+
+- $D \in \mathcal{F} \Rightarrow D^c \in \mathcal{F}$
+
+- $C \cup D^c   \in \mathcal{F} \Rightarrow    C^c \cap D  \in \mathcal{F} $
+
+- $C \in \mathcal{F} \Rightarrow C^c \in \mathcal{F}$
+
+- $D \cup C^c   \in \mathcal{F} \Rightarrow    D^c \cap C  \in \mathcal{F} $
+
+- $ D^c \cap C  \in \mathcal{F},  C^c \cap D  \in \mathcal{F} \Rightarrow (C^c \cap D) \cup (D^c \cap C)  \in \mathcal{F}$
+
+\subsection*{Задача 4}
+
+Cигма-алгебра, порожденная множеством $A$:
+
+$\sigma(A) = \{\emptyset, A, A^c, \Omega  \}$
+
+\subsection*{Задача 5}
+
+Cигма-алгебра, порожденная непересекающимися множествами $A, B$:
+
+
+$\sigma(A \cup B) = \{\emptyset, A, A^c, B, B^c, A \cup B, A^c \cap B^c, \Omega  \}$
+
+
+\subsection*{Задача 6}
+
+\begin{equation}\label{key}
+\text{a)}  \ \   \mathbb{I}_{A} * \mathbb{I}_{B} =  \begin{cases} 1,  x \in A  \\0,  x \notin A   
+\end{cases}  * \begin{cases} 1,  x \in B \\0,  x \notin B   
+\end{cases}  = \begin{cases} 1,  (x \in A) \  \wedge \  (x \in  B)  \\ 0, ((x \in A)  \wedge  (x \notin B )  ) \vee ((x \notin A)  \wedge  (x \in B )  ) \\ \ \ \ \ \ \vee ((x \notin A)  \wedge  (x \notin B )  )
+\end{cases} = 
+\end{equation}
+
+\begin{equation}\label{key}
+= \begin{cases} 1,  x \in A \cap B \\0,  x \notin A \cap B 
+\end{cases}  = \mathbb{I}_{A \cap B}
+\end{equation}
+
+
+
+\begin{equation}\label{key}
+\text{b)}  \ \   \mathbb{I}_{A}  +  \mathbb{I}_{B} -  \mathbb{I}_{A \cap B}   =  \begin{cases} 2,  (x \in A) \wedge (x \in B)  \\  1,  (x \in A) \vee (x \in B)  \\0,  (x \notin A) \vee (x \notin B)    
+\end{cases}  -  \begin{cases} 1,  (x \in A) \wedge (x \in B) \\0,  x \notin A \cap B   
+\end{cases}  = \begin{cases} 1,  x \in A \cup B \\0,  x \notin A \cup B 
+\end{cases}  = \mathbb{I}_{A \cup B} 
+\end{equation}
+
+\subsection*{Задача 7}
+
+Пусть $\mathcal{F}_1$  и $\mathcal{F}_2$ две сигма алгебры. 
+
+
+a) $ \mathcal{G} = \mathcal{F}_1 \cap \mathcal{F}_2 $ является сигма-алгеброй, т.к.:
+
+1. $\Omega \in \mathcal{F}_1$ и $\Omega \in \mathcal{F}_2 \Rightarrow  \Omega \in \mathcal{F}_1 \cap \mathcal{F}_2  = \mathcal{G}  $  
+
+2. Если $A \in  \mathcal{G}  = \mathcal{F}_1 \cap \mathcal{F}_2  \Rightarrow   $
+$A^c \in \mathcal{F}_1$ и $A^c \in \mathcal{F}_2 \Rightarrow  A^c \in \mathcal{F}_1 \cap \mathcal{F}_2  = \mathcal{G}  $  
+
+3. Пусть $A_i \in \mathcal{G} \  \forall i \in I  \Rightarrow   \cup A_i \in  \mathcal{F}_1, \cup A_i \in  \mathcal{F}_2  \Rightarrow \cup A_i \in \mathcal{G}$ 
+
+b)  $ \mathcal{G} = \mathcal{F}_1 \cup \mathcal{F}_2 $ не является сигма-алгеброй в общем случае, например, если  рассмотреть объединение сигма-алгебр, порожденных непересекающимися множествами $A$ и $ B$:
+
+$\sigma(A) \cup \sigma(B) = \{\emptyset, A, A^c, B, B^c,  \Omega  \}$
+
+оно не содержит $A^c \cup B^c$,  а значит не все элементы множества  имеют обратные элементы принадлежащие этому же множеству.
+
+\subsection*{Задача 8}
+
+Пусть $\mathcal{F}$ - сигма-алгебра и множество $A$ ей не принадлежит. 
+
+
+$\sigma(\mathcal{F} \cup A) = \{\emptyset, C, D, C^c, D^c, A, A^c, ...,  \Omega \} $
+
+$B = (C \cap A) \cup (D \cap A^c) $
+
+(i) $\cup_{n=1}^{\infty} [(A \cap C_n) \cup  (D_n \cap A^c)] = (\cup_{n=1} C_n \cap A)  \cup   (\cup_{n=1} D_n \cap A^c)  $
+
+(ii) $B^c = (C^c \cup A^c) \cap (D^c \cup A) = (C^c \cap D^c) \cup  (C^c \cap A) \cup (D^c \cap A^c) =  (C^c \cap D^c \cap A ) \cup  (C^c \cap D^c \cap A^c ) \cup (C^c \cap A) \cup (D^c \cap A^c)  =  (C^c \cap A) \cup (D^c \cap A^c)$
+
+$\sigma$-алгебра содержит любой элемент из $B$, $B^c$, а так же объединения множеств. 
+
+\subsection*{Задача 9}
+
+Пусть $(X, Y)$ - пара независимых случайных величин, а $(Z, T)$ – пара независимых
+случайных величин такая, что $X = Z$, $Y = T$ (равенство по распределению).
+
+a) $E(f(X)) = E(f(Z))$, 
+
+b) $E(X^2Y) = E(Z^2T)$, 
+
+c) $E(f(X)g(Y))=E(f(Z)g(T))$, 
+
+d) $E(f(X, Y))=E(f(Z, T))$, т.к. $(X,Y)=(Z,T)$ по распределению.
+
+Если отказаться от независимости $Z$ и $T$ это не всегда верно, т.к. $(X,Y) \neq (Z,T)$ по распределению.
+
+\section*{Тема 2: условные математические ожидания.}
+
+\subsection*{Задача 1}
+
+$E(YE(X|\mathcal{G})) = E(E(Y|\mathcal{G})E(X|\mathcal{G}))) = E(XE(Y|\mathcal{G}))$
+
+\subsection*{Задача 2}
+
+Пусть $X \in L^2$, $E(X|\mathcal{G}) = Y$ и $E(X^2|\mathcal{G}) = Y^2$.
+
+Тогда $E([X-Y]^2|\mathcal{G}) = E(X^2-2XY + Y^2|\mathcal{G}) =  E(X^2|\mathcal{G}) - 2Y E(X|\mathcal{G}) + Y^2 = 0$.
+
+$E[E([X-Y]^2|\mathcal{G})] = E([X-Y]^2)  = 0 \Rightarrow X = Y $ 
+
+\subsection*{Задача 3}
+
+Пусть $(X, Y)$ независимы, $X$ строго положительна и $Z = XY$. 
+
+$E(\mathbb{I}_{\{Z\leq t \}}  |X) = E(\mathbb{I}_{\{XY\leq t \}}  |X) = E(\mathbb{I}_{\{Y\leq t/X \}}  |X) = P(Y\leq t/X |X) = F_Y(t/X)$
+
+\subsection*{Задача 4}
+
+Пусть $X, Y$ две с.в. такие, что $X − Y$ не зависит от сигма-алгебры $\mathcal{G}$, $E(X − Y) = m$,
+$Var(X − Y) = \sigma^2$. Предположим, что $Y$ является $\mathcal{G}$ – измеримой. 
+
+$E(X − Y|\mathcal{G}) = E(X − Y) = m$. 
+
+$E(X − Y|\mathcal{G}) = E(X|\mathcal{G})  − Y  = m \Rightarrow E(X|\mathcal{G}) = Y + m$ 
+
+$E((X − Y)^2|G) = \sigma^2 + m^2$
+
+$E((X − Y)^2|G) = E(X^2|\mathcal{G}) - 2YE(X|\mathcal{G}) + Y^2 = \sigma^2 + m^2  \Rightarrow  E(X^2|\mathcal{G}) = \sigma^2  + 2Y^2 + 2Ym - Y^2  + m^2 = \sigma^2 + (Y+m)^2 $ 
+
+
+\subsection*{Задача 5}
+
+Пусть $X = X_1  + X_2$. Предположим, что $X_1$ – гауссовская с.в., не зависящая от сигма-алгебры $\mathcal{G}$, а $X_2$ является $\mathcal{G}$ – измеримой.
+
+a) $E(X|\mathcal{G}) = E(X_1|\mathcal{G}) + E(X_2|\mathcal{G}) = E(X_1) + X_2 $
+
+$Var(X|\mathcal{G}) =  E(X^2|\mathcal{G}) - (E(X|\mathcal{G}))^2 = E(X_1^2|\mathcal{G}) + 2X_2  E(X_1|\mathcal{G}) + X^2 - E(X_1)^2 - 2X_2E(X_1) - X^2  =  E(X_1^2) - - E(X_1)^2 = Var(X_1) $
+
+b) $E(e^{\lambda X}| \mathcal{G} ) = E(e^{\lambda X_1} e^{\lambda X_2}| \mathcal{G} )  =  e^{\lambda X_2} E(e^{\lambda X_1})  =  e^{\lambda X_2}  \exp(\lambda E(X_1) + \lambda^2/2 Var(X_1)) $
+
+\subsection*{Задача 6}
+Пусть $Z_1$, $Z_2$  две интегрируемые с квадратом с.в. 
+
+
+$Cov(Z_1, Z_2 | \mathcal{G} ) = E(Z_1Z_2| \mathcal{G}) − E(Z_1 | \mathcal{G})E(Z_2 | \mathcal{G}) = E(Z_1Z_2| \mathcal{G}) − E(Z_2 E(Z_1 | \mathcal{G}) | \mathcal{G})= $
+
+$= E(Z_1Z_2 − Z_2 E(Z_1 | \mathcal{G}) | \mathcal{G})  =  E[(Z_1-E(Z_1|\mathcal{G}))Z_2|\mathcal{G}]$
+
+\subsection*{Задача 7}
+Пусть $Z =a Y  + b$. 
+
+
+$\sigma(Z):  Z^{-1}(A) = \{w|Z(w) \in A \} = \{w|aY(w)+b \in A \} =  \{w|Y(w) \in B \}   $, где $A$ - борелевское, $B = \{ x \in \mathbb{R} : a x +b \in A\} $
+ тоже борелевское, откуда следует  $E(aX + b|Z) = E(aX + b|Y)  =  aE(X|Y) + b$
+ 
+
+
+\subsection*{Задача 8}
+
+ Пусть $\mathcal{F}$ - сигма-алгебра. Рассмотрим сигма-алгебру $\mathcal{G}$, порожденную с.в. $\tau \wedge 1$,
+где $\tau$ – с.в. со значениями в $\mathbb{R}^+$. $X$ является $\mathcal{F}$ - измеримой с.в. Пользуясь леммой Дуба-Дынкина, имеем $h(1 \wedge \tau)$ - борелевская.
+
+$E(X|\mathcal{G}) = E(X|\tau<1) \mathbb{I}_{\{\tau < 1 \}} + E(X|\tau\geq 1) \mathbb{I}_{\{\tau \geq 1 \}} $
+
+$E(X|\mathcal{G}) \mathbb{I}_{\{\tau \geq 1 \}}  = E(X|\tau\geq 1) \mathbb{I}_{\{\tau \geq 1 \}} =
+\frac{E(X \mathbb{I}_{\{\tau \geq 1 \}})}{\mathbb{I}_{\{\tau \geq 1 \}}} \mathbb{I}_{\{\tau \geq 1 \}}$
+ 
+
+
+
+\subsection*{Задача 9}
+
+Пусть $\mathcal{G}_1$ и $\mathcal{G}_2$ две независимые сигма-алгебры, $\mathcal{G} = \mathcal{G}_1 \wedge \mathcal{G}_2 $ и $X_i$  две
+ограниченные случайные величины такие, что $X_i$   является $\mathcal{G}_i$  измеримой, $i = 1,2$.
+
+Доказать, что
+$E(X_1 X_2  |\mathcal{G}) = E(X_1 |\mathcal{G}) E(X_2  |\mathcal{G}) = E(X_1 |\mathcal{G}_1 )E(X_2 | \mathcal{G}_2 ) = X_1X_2$.
+
+\end{document}

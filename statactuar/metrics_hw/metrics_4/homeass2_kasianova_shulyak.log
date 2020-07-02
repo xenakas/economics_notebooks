@@ -1,0 +1,396 @@
+-------------------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  C:\Users\Lena\Desktop\ecmdz6\homeass2_kasianova_shulyak.log
+  log type:  text
+ opened on:  16 Apr 2020, 23:07:54
+
+. 
+. use "C:\Users\Lena\Desktop\ecmdz6\crime4.dta", clear 
+
+. 
+. gen lpolpc1 = lpolpc-clpolpc
+(90 missing values generated)
+
+. 
+. scatter lcrmrte lpolpc
+
+. scatter lcrmrte ldensity
+
+. scatter lcrmrte lpctymle
+
+. 
+. scatter lcrmrte county
+
+. scatter lcrmrte lpctymle
+
+. scatter lcrmrte lprbarr
+
+. scatter lcrmrte lavgsen
+
+. corr lcrmrte lprbarr lprbconv lprbpris lavgsen lpolpc
+(obs=630)
+
+             |  lcrmrte  lprbarr lprbconv lprbpris  lavgsen   lpolpc
+-------------+------------------------------------------------------
+     lcrmrte |   1.0000
+     lprbarr |  -0.4498   1.0000
+    lprbconv |  -0.4569  -0.0973   1.0000
+    lprbpris |   0.1805  -0.0212  -0.1581   1.0000
+     lavgsen |   0.0214  -0.0483  -0.0269   0.0029   1.0000
+      lpolpc |   0.1395   0.0531   0.2730  -0.0560   0.0336   1.0000
+
+
+. reg lcrmrte lprbarr lprbconv lprbpris lavgsen lpolpc
+
+      Source |       SS           df       MS      Number of obs   =       630
+-------------+----------------------------------   F(5, 624)       =    162.65
+       Model |  116.778368         5  23.3556736   Prob > F        =    0.0000
+    Residual |  89.6019767       624  .143592911   R-squared       =    0.5658
+-------------+----------------------------------   Adj R-squared   =    0.5624
+       Total |  206.380345       629  .328108656   Root MSE        =    .37894
+
+------------------------------------------------------------------------------
+     lcrmrte |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+     lprbarr |  -.7215113   .0367089   -19.65   0.000    -.7935993   -.6494234
+    lprbconv |  -.5492767   .0262701   -20.91   0.000    -.6008652   -.4976882
+    lprbpris |   .2379716   .0664302     3.58   0.000     .1075178    .3684254
+     lavgsen |  -.0652007   .0553516    -1.18   0.239    -.1738987    .0434972
+      lpolpc |   .3625234   .0299608    12.10   0.000     .3036873    .4213596
+       _cons |  -2.206729   .2386927    -9.25   0.000    -2.675467    -1.73799
+------------------------------------------------------------------------------
+
+. xtreg lcrmrte lprbarr lprbconv lprbpris lavgsen lpolpc, be
+must specify panelvar; use xtset
+r(459);
+
+end of do-file
+
+r(459);
+
+. xtset country year
+variable country not found
+r(111);
+
+. xtset county year
+       panel variable:  county (strongly balanced)
+        time variable:  year, 81 to 87
+                delta:  1 unit
+
+. testparm i.year
+no such variables;
+the specified varlist does not identify any testable coefficients
+r(111);
+
+. xtset country year
+variable country not found
+r(111);
+
+. 
+. xtreg lcrmrte lprbarr lprbconv lprbpris lavgsen lpolpc, be
+
+Between regression (regression on group means)  Number of obs     =        630
+Group variable: county                          Number of groups  =         90
+
+R-sq:                                           Obs per group:
+     within  = 0.0405                                         min =          7
+     between = 0.7099                                         avg =        7.0
+     overall = 0.4888                                         max =          7
+
+                                                F(5,84)           =      41.11
+sd(u_i + avg(e_i.))=  .3048712                  Prob > F          =     0.0000
+
+------------------------------------------------------------------------------
+     lcrmrte |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+     lprbarr |  -.8128525   .0925787    -8.78   0.000    -.9969554   -.6287496
+    lprbconv |  -.5920724    .070137    -8.44   0.000    -.7315476   -.4525973
+    lprbpris |    1.16067    .237592     4.89   0.000     .6881926    1.633148
+     lavgsen |  -.1312699   .2085175    -0.63   0.531    -.5459298      .28339
+      lpolpc |   .3446985   .0716332     4.81   0.000      .202248     .487149
+       _cons |  -1.515489   .7063476    -2.15   0.035    -2.920139   -.1108394
+------------------------------------------------------------------------------
+
+. 
+. xtreg lcrmrte lprbarr lprbconv lprbpris lavgsen lpolpc, fe
+
+Fixed-effects (within) regression               Number of obs     =        630
+Group variable: county                          Number of groups  =         90
+
+R-sq:                                           Obs per group:
+     within  = 0.3590                                         min =          7
+     between = 0.4302                                         avg =        7.0
+     overall = 0.4198                                         max =          7
+
+                                                F(5,535)          =      59.92
+corr(u_i, Xb)  = 0.2215                         Prob > F          =     0.0000
+
+------------------------------------------------------------------------------
+     lcrmrte |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+     lprbarr |  -.3835369   .0334672   -11.46   0.000    -.4492801   -.3177938
+    lprbconv |  -.3059757   .0218578   -14.00   0.000    -.3489133   -.2630381
+    lprbpris |  -.1954515   .0333637    -5.86   0.000    -.2609915   -.1299116
+     lavgsen |   .0356643   .0261247     1.37   0.173    -.0156552    .0869838
+      lpolpc |   .4137712   .0274687    15.06   0.000     .3598113     .467731
+       _cons |  -1.872858   .1729314   -10.83   0.000    -2.212566    -1.53315
+-------------+----------------------------------------------------------------
+     sigma_u |  .42736725
+     sigma_e |  .14681793
+         rho |  .89443836   (fraction of variance due to u_i)
+------------------------------------------------------------------------------
+F test that all u_i=0: F(89, 535) = 40.69                    Prob > F = 0.0000
+
+. 
+. predict uu, u
+
+. 
+. 
+. 
+. local list "lcrmrte lprbarr lprbconv lprbpris lavgsen lpolpc"
+
+. 
+. foreach xx of local list {
+  2. 
+. display "`xx'"
+  3. 
+. xtreg `xx', fe
+  4. 
+. predict mm, xb
+  5. 
+. predict u1, u
+  6. 
+. gen tm_ `xx' = u1+mm
+  7. 
+. drop ul mm
+  8. 
+. }
+lcrmrte
+
+Fixed-effects (within) regression               Number of obs     =        630
+Group variable: county                          Number of groups  =         90
+
+R-sq:                                           Obs per group:
+     within  =      .                                         min =          7
+     between =      .                                         avg =        7.0
+     overall =      .                                         max =          7
+
+                                                F(0,540)          =       0.00
+corr(u_i, Xb)  =      .                         Prob > F          =          .
+
+------------------------------------------------------------------------------
+     lcrmrte |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+       _cons |  -3.609225   .0246301  -146.54   0.000    -3.657608   -3.560843
+-------------+----------------------------------------------------------------
+     sigma_u |  .54990091
+     sigma_e |   .6182118
+         rho |  .44171961   (fraction of variance due to u_i)
+------------------------------------------------------------------------------
+F test that all u_i=0: F(89, 540) = 0.00                     Prob > F = 1.0000
+variable lcrmrte already defined
+r(110);
+
+. 
+. \
+\ is not a valid command name
+r(199);
+
+. 
+. reg uu west central urban pctmin80 tm_lprbarr tm_lprbconv tm_lprbpris tm_lavgsen tm_lpol
+variable tm_lprbarr not found
+r(111);
+
+. 
+. 
+. 
+. xtreg lcrmrte lprbarr lprbconv lprbpris lavgsen lpolpc d8*, fe
+
+Fixed-effects (within) regression               Number of obs     =        630
+Group variable: county                          Number of groups  =         90
+
+R-sq:                                           Obs per group:
+     within  = 0.4342                                         min =          7
+     between = 0.4066                                         avg =        7.0
+     overall = 0.4042                                         max =          7
+
+                                                F(11,529)         =      36.91
+corr(u_i, Xb)  = 0.2068                         Prob > F          =     0.0000
+
+------------------------------------------------------------------------------
+     lcrmrte |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+     lprbarr |  -.3597945   .0324192   -11.10   0.000    -.4234806   -.2961084
+    lprbconv |  -.2858734   .0212173   -13.47   0.000    -.3275539   -.2441929
+    lprbpris |  -.1827813   .0324611    -5.63   0.000    -.2465497   -.1190128
+     lavgsen |  -.0044879   .0264471    -0.17   0.865    -.0564421    .0474663
+      lpolpc |   .4241144   .0263661    16.09   0.000     .3723193    .4759095
+         d82 |   .0125802   .0215416     0.58   0.559    -.0297373    .0548977
+         d83 |  -.0792812   .0213399    -3.72   0.000    -.1212027   -.0373598
+         d84 |  -.1177281   .0216145    -5.45   0.000    -.1601888   -.0752673
+         d85 |  -.1119561   .0218459    -5.12   0.000    -.1548715   -.0690406
+         d86 |  -.0818268   .0214266    -3.82   0.000    -.1239185   -.0397352
+         d87 |  -.0404705   .0210392    -1.92   0.055    -.0818011    .0008602
+       _cons |  -1.604135   .1685739    -9.52   0.000    -1.935291   -1.272978
+-------------+----------------------------------------------------------------
+     sigma_u |  .43487414
+     sigma_e |  .13871214
+         rho |  .90765322   (fraction of variance due to u_i)
+------------------------------------------------------------------------------
+F test that all u_i=0: F(89, 529) = 45.87                    Prob > F = 0.0000
+
+. 
+. 
+. 
+. test d82 d83 d84 d85 d86 d87
+
+ ( 1)  d82 = 0
+ ( 2)  d83 = 0
+ ( 3)  d84 = 0
+ ( 4)  d85 = 0
+ ( 5)  d86 = 0
+ ( 6)  d87 = 0
+
+       F(  6,   529) =   11.73
+            Prob > F =    0.0000
+
+. 
+. xtreg lcrmrte lprbarr lprbconv lprbpris lavgsen lpolpc d8* ldensity lwcon lwtuc lwtrd lw
+lw ambiguous abbreviation
+r(111);
+
+. 
+. xtreg lcrmrte lprbarr lprbconv lprbpris lavgsen lpolpc, re
+
+Random-effects GLS regression                   Number of obs     =        630
+Group variable: county                          Number of groups  =         90
+
+R-sq:                                           Obs per group:
+     within  = 0.3538                                         min =          7
+     between = 0.4730                                         avg =        7.0
+     overall = 0.4572                                         max =          7
+
+                                                Wald chi2(5)      =     374.30
+corr(u_i, X)   = 0 (assumed)                    Prob > chi2       =     0.0000
+
+------------------------------------------------------------------------------
+     lcrmrte |      Coef.   Std. Err.      z    P>|z|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+     lprbarr |  -.4485975   .0326419   -13.74   0.000    -.5125745   -.3846205
+    lprbconv |  -.3469171   .0214454   -16.18   0.000    -.3889493   -.3048848
+    lprbpris |  -.1876919   .0348083    -5.39   0.000    -.2559148   -.1194689
+     lavgsen |   .0276295   .0274935     1.00   0.315    -.0262568    .0815157
+      lpolpc |   .4184813   .0269885    15.51   0.000     .3655847    .4713779
+       _cons |   -1.92944    .177319   -10.88   0.000    -2.276979   -1.581901
+-------------+----------------------------------------------------------------
+     sigma_u |   .2997784
+     sigma_e |  .14681793
+         rho |  .80654279   (fraction of variance due to u_i)
+------------------------------------------------------------------------------
+
+. 
+. xttest0
+
+Breusch and Pagan Lagrangian multiplier test for random effects
+
+        lcrmrte[county,t] = Xb + u[county] + e[county,t]
+
+        Estimated results:
+                         |       Var     sd = sqrt(Var)
+                ---------+-----------------------------
+                 lcrmrte |   .3281087       .5728077
+                       e |   .0215555       .1468179
+                       u |   .0898671       .2997784
+
+        Test:   Var(u) = 0
+                             chibar2(01) =   933.68
+                          Prob > chibar2 =   0.0000
+
+. 
+. xtreg lcrmrte lprbarr lprbconv lprbpris lavgsen lpolpc, re
+
+Random-effects GLS regression                   Number of obs     =        630
+Group variable: county                          Number of groups  =         90
+
+R-sq:                                           Obs per group:
+     within  = 0.3538                                         min =          7
+     between = 0.4730                                         avg =        7.0
+     overall = 0.4572                                         max =          7
+
+                                                Wald chi2(5)      =     374.30
+corr(u_i, X)   = 0 (assumed)                    Prob > chi2       =     0.0000
+
+------------------------------------------------------------------------------
+     lcrmrte |      Coef.   Std. Err.      z    P>|z|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+     lprbarr |  -.4485975   .0326419   -13.74   0.000    -.5125745   -.3846205
+    lprbconv |  -.3469171   .0214454   -16.18   0.000    -.3889493   -.3048848
+    lprbpris |  -.1876919   .0348083    -5.39   0.000    -.2559148   -.1194689
+     lavgsen |   .0276295   .0274935     1.00   0.315    -.0262568    .0815157
+      lpolpc |   .4184813   .0269885    15.51   0.000     .3655847    .4713779
+       _cons |   -1.92944    .177319   -10.88   0.000    -2.276979   -1.581901
+-------------+----------------------------------------------------------------
+     sigma_u |   .2997784
+     sigma_e |  .14681793
+         rho |  .80654279   (fraction of variance due to u_i)
+------------------------------------------------------------------------------
+
+. 
+. est store RE
+
+. 
+. xtreg lcrmrte lprbarr lprbconv lprbpris lavgsen lpolpc, fe
+
+Fixed-effects (within) regression               Number of obs     =        630
+Group variable: county                          Number of groups  =         90
+
+R-sq:                                           Obs per group:
+     within  = 0.3590                                         min =          7
+     between = 0.4302                                         avg =        7.0
+     overall = 0.4198                                         max =          7
+
+                                                F(5,535)          =      59.92
+corr(u_i, Xb)  = 0.2215                         Prob > F          =     0.0000
+
+------------------------------------------------------------------------------
+     lcrmrte |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+     lprbarr |  -.3835369   .0334672   -11.46   0.000    -.4492801   -.3177938
+    lprbconv |  -.3059757   .0218578   -14.00   0.000    -.3489133   -.2630381
+    lprbpris |  -.1954515   .0333637    -5.86   0.000    -.2609915   -.1299116
+     lavgsen |   .0356643   .0261247     1.37   0.173    -.0156552    .0869838
+      lpolpc |   .4137712   .0274687    15.06   0.000     .3598113     .467731
+       _cons |  -1.872858   .1729314   -10.83   0.000    -2.212566    -1.53315
+-------------+----------------------------------------------------------------
+     sigma_u |  .42736725
+     sigma_e |  .14681793
+         rho |  .89443836   (fraction of variance due to u_i)
+------------------------------------------------------------------------------
+F test that all u_i=0: F(89, 535) = 40.69                    Prob > F = 0.0000
+
+. 
+. est store FE
+
+. 
+. hausman FE RE, sigmamore
+
+                 ---- Coefficients ----
+             |      (b)          (B)            (b-B)     sqrt(diag(V_b-V_B))
+             |       FE           RE         Difference          S.E.
+-------------+----------------------------------------------------------------
+     lprbarr |   -.3835369    -.4485975        .0650606        .0139921
+    lprbconv |   -.3059757    -.3469171        .0409414        .0088373
+    lprbpris |   -.1954515    -.1876919       -.0077597         .006471
+     lavgsen |    .0356643     .0276295        .0080348         .003558
+      lpolpc |    .4137712     .4184813       -.0047101         .011013
+------------------------------------------------------------------------------
+                           b = consistent under Ho and Ha; obtained from xtreg
+            B = inconsistent under Ha, efficient under Ho; obtained from xtreg
+
+    Test:  Ho:  difference in coefficients not systematic
+
+                  chi2(5) = (b-B)'[(V_b-V_B)^(-1)](b-B)
+--Break--
+r(1);
+
+. exit, clear

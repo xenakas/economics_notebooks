@@ -1,0 +1,450 @@
+
+\documentclass[a4paper,12pt]{article} % добавить leqno в [] для нумерации слева
+
+\usepackage[left=2cm,right=2cm,
+top=2cm,bottom=2cm,bindingoffset=0cm]{geometry}
+
+\usepackage[russian, english]{babel} % выбор языка для документа
+\usepackage[utf8]{inputenc} % задание utf8 кодировки исходного tex файла
+\usepackage[X2,T2A]{fontenc}        % кодировка
+
+\usepackage{fontspec}         % пакет для подгрузки шрифтов
+\setmainfont{Times New Roman}       % задаёт основной шрифт документа
+
+
+\usepackage{amsmath,amsfonts,amssymb,amsthm,mathtools} % AMS
+\usepackage{icomma} 
+\mathtoolsset{showonlyrefs=true} % Показывать номера только у тех формул, на которые есть \eqref{} в тексте.
+%\usepackage{euscript}	 % Шрифт Евклид
+%\usepackage{mathrsfs} % Красивый матшрифт
+\usepackage{enumitem}
+\usepackage{siunitx}
+\usepackage{tikz} % To generate the plot from csv
+\usepackage{pgfplots}
+
+%%% Заголовок
+
+\newcommand{\latinword}[1]{\textsf{\itshape #1}}%
+
+\begin{document}
+
+{ Касьянова Ксения, СМАР19. Домашняя работа №2. }
+
+\noindent\makebox[\linewidth]{\rule{\textwidth}{0.4pt}}
+
+
+\section*{Тема 3: моделирование распределений.}
+\subsection*{Задача 1}
+
+Пусть $U\sim Unif[0,1]$. Смоделируем $X\sim Geom(p)$: 
+
+$f(k) = q^{k-1}p, q=1-p$
+
+$F(k)=1-q^k, k=1,2,...$
+
+$1-q^k=U$ $\Rightarrow$ $\ln(1-U) = \ln q^k$
+$\Rightarrow$
+$k=\dfrac{\ln(1-U)}{\ln(1-p)}$
+
+$X=\min[k:1-q^k\geq U ] =  \left[ \dfrac{\ln(1-U)}{\ln(1-p)} \right]$
+
+$X\sim Geom(p)$
+
+\subsection*{Задача 2}
+
+Пусть $U\sim Unif[0,1]$. Смоделируем $X\sim Unif\{0,1,...,n\}, a=0, b=n, N = n+1 $: 
+
+$f(k) = \dfrac{1}{N}, k=a,a+1,...,b $
+
+$F(k)= \begin{cases}
+0, & k < a\\
+\dfrac{k-a+1}{N}, & a\leq k \leq  b\\
+1, & k > b
+\end{cases}
+$
+
+$\dfrac{k-a+1}{N}=U$ $\Rightarrow$ $k = UN-1+a $
+
+$X=\min\left[k: \dfrac{k-a+1}{N} \geq U \right] = [UN-1+a] = [U(n+1)]-1  $
+
+$X\sim Unif\{0,1,...,n\}$
+
+
+
+\subsection*{Задача 3}
+
+$f(x) = 3/8 * (1+x^2), - 1 \leq x \leq 1$ 
+
+$f(x) \leq 3/4$, $h(x) = 1/2*\mathbb{I}_{ |x| \leq 1}$
+
+$3/8 * (1+x^2) * \mathbb{I}_{ |x| \leq 1} \leq k*1/2*\mathbb{I}_{ |x| \leq 1}$
+
+$k = 3/2$
+
+$3/8 * (1+x^2) * \mathbb{I}_{ |x| \leq 1} \leq 3/2*1/2*\mathbb{I}_{ |x| \leq 1}$
+
+$U\sim Unif[0,1]$, $Y\sim h(y)
+$
+
+$U\leq g(Y) =\dfrac{f(Y)}{k*h(Y)} = \dfrac{3/8 * (1+Y^2)  }{3/2*1/2} = 1/2* (1+Y^2)$
+
+
+В итоге получаем, что,
+
+если $U\leq 1/2*(1+Y^2) $,  принимаем, 
+
+если $U > 1/2*(1+Y^2) $,  отвергаем.
+
+\newpage
+
+
+\subsection*{Задача 4}
+
+(a) $f(x) = c (x+1)^{3/4}, 0\leq x\leq1$ 
+
+$c \int_{0}^{1} (x+1)^{3/4} dx=1  $
+$\Rightarrow$
+$\dfrac{4}{7}c  (2^{7/4} -1)=1   $
+$\Rightarrow$
+$c\approx 0.74$
+
+Пусть 
+$f(x) = 0.74 (x+1)^{3/4}  \mathbb{I}_{\{x\in [0;1]\}} $, 
+$h(x) = \mathbb{I}_{\{x\in [0;1]\}}  $ 
+ 
+Тогда $f(X) \leq 0.74 * 2^{3/4}  $ $\Rightarrow$
+$k = 0.74 * 2^{3/4} $ 
+
+
+$0.74 (x+1)^{3/4}  \mathbb{I}_{\{x\in [0;1]\}} \leq   0.74 * 2^{3/4}  \mathbb{I}_{\{x\in [0;1]\}} $
+
+
+$U\sim Unif[0,1]$,
+$Y \sim h(y)$
+
+$U\leq g(Y) =\dfrac{f(Y)}{k*h(Y)} = \dfrac{0.74 (Y+1)^{3/4} }{0.74*2^{3/4}} = \dfrac{(Y+1)^{3/4}}{2^{3/4}}$
+
+В итоге получаем, что,
+
+если $U\leq \dfrac{(Y+1)^{3/4}}{2^{3/4}} $,  принимаем,
+ 
+если $U > \dfrac{(Y+1)^{3/4}}{2^{3/4}} $,  отвергаем.
+
+
+(б)  $f(x) = c|\sin(x)|, -\pi/2 \leq x\leq \pi/2$
+ 
+ $c\int_{-\pi/2}^{\pi/2} |\sin(x)| dx = 1 $
+ $\Rightarrow$
+$2c\int_{0}^{\pi/2} \sin(x) dx=2c = 1  $
+$\Rightarrow$
+$c=1/2$
+
+$1/2 |\sin(x)| \mathbb{I}_{\{x\in [-\pi/2 ;\pi/2 ]\}} \leq k * 1/\pi * \mathbb{I}_{\{x\in [-\pi/2 ;\pi/2 ]\}} $ $\Rightarrow$
+
+
+Пусть
+
+$f(x) =  1/2*|\sin(x)| * \mathbb{I}_{\{x\in [-\pi/2 ;\pi/2 ]\}} $
+
+$h(x) = 1/\pi * \mathbb{I}_{\{x\in [-\pi/2 ;\pi/2 ]\}}  $
+
+$k=\pi/2$ 
+
+
+
+$U\sim Unif[0,1]$,
+$Y \sim h(y)$
+ 
+ 
+$U\leq g(Y) =\dfrac{f(Y)}{k*h(Y)} = \dfrac{ 1/2*|\sin(Y)| }{\pi/2*1/\pi } = |\sin(Y)|$
+
+В итоге получаем, что,
+
+если $U\leq |\sin(Y)|$,  принимаем, 
+
+если $U >|\sin(Y)| $,  отвергаем.
+
+(в)
+
+$f(x) = c \exp(-3x) , 0\leq x\leq  1/3, \sigma>0 $
+
+$\int_0^{1/3}  c \exp(-3x) dx = c/3 * \exp(-3x)  \biggr\rvert^{1/3}_{0} = 1 $ $\Rightarrow$ $c\approx 4.746$
+
+$4.746 \exp(-3x) \mathbb{I}_{\{x\in [0;1/3]\}} \leq k* 3* \mathbb{I}_{\{x\in [0;1/3]\}} $ $\Rightarrow$ $k\approx 1.582$
+
+$U\sim Unif[0,1]$,
+$Y \sim h(Y) $
+
+$g(Y) =\dfrac{f(Y)}{k*h(Y)} = \dfrac{4.746 \exp(-3Y) }{1.582 * 3} =  \exp(-3Y) $
+
+
+В итоге получаем, что,
+
+если $U\leq \exp(-3Y)$,  принимаем,
+ 
+если $U > \exp(-3Y) $,  отвергаем.
+
+
+\subsection*{Задача 5}
+
+(a)
+
+$f(x) = c* x^9 \exp(-3x), x\geq0$
+
+
+$\int_{0}^{\infty}  c* x^9 \exp(-3x) dx =1 $ $\Rightarrow$ $c=729/4480 \approx 6.1454$
+
+Имеем $X\sim Gamma(10,1/3) $, $E[X] =10*1/3  = 10/3 $
+
+Возьмем $Y\sim Exp(3/10) $, $E[Y] = \lambda = E[X]$ с таким же средним. 
+
+$729/4480 * x^9 * \exp(-3x) \leq k*3/10 * \exp(-3/10 x)$
+
+$k \geq \dfrac{729x^9\exp(-3x)}{4480*0.3*\exp(-0.3x)} = \dfrac{243}{448} * x^9 * \exp(-2.7x) = t(x)$
+
+$FOC: t'(x) = 243/448 *( 9* x^8 * \exp(-2.7x) -2.7*  x^9 * \exp(-2.7x)  ) = 0 $ $\Rightarrow$ $x=10/3$
+
+$t(10/3) = \dfrac{243}{448} * (10/3)^9 * \exp(-2.7*10/3) = k$
+
+$k\approx 3.40085$
+
+$g(Y) =\dfrac{f(Y)}{k*h(Y)} = \dfrac{729/4480 * Y^9 * \exp(-3Y)  }{3.40085 * 3/10 * \exp(-3/10*Y)} \approx 0.15949  *  Y^9 *\exp(-2.7Y) $
+
+$U\sim Unif[0,1]$,
+$Y \sim Exp(3/10)$
+
+В итоге получаем, что,
+
+если $U\leq  0.15949  *  Y^9 *\exp(-2.7*Y)$,  принимаем, 
+
+если $U >  0.15949  *  Y^9 *\exp(-2.7*Y) $,  отвергаем.
+
+
+(б)
+
+$f(x) = c* \exp(-(x-1)^2), x\geq1$
+
+
+$c\int_{1}^{\infty} \exp(-(x-1)^2) dx =1 $ $\Rightarrow$ $c=2/\sqrt{\pi} \approx 1.128$
+
+Если $x\geq 1$
+
+$2/\sqrt{\pi}  *  \exp(-(x-1)^2) \leq k*\exp(-(x-1)) $
+
+$k\geq \dfrac{2/\sqrt{\pi}  *  \exp(-(x-1)^2)}{\exp(-(x-1))}   =  2/\sqrt{\pi}  *  \exp(-x^2+3x-2) = t(x)$
+
+$FOC: t'(x) = 2/\sqrt{\pi} * \exp(-x^2+3x-2) * (-2x+3) = 0 $ $\Rightarrow$ $x=3/2$
+
+$t(3/2) = 2/\sqrt{\pi}  *  \exp(1/4) = k$
+
+$g(Y) =\dfrac{f(Y)}{k*h(Y)} = \dfrac{2/\sqrt{\pi}  *  \exp(-(Y-1)^2)  }{2/\sqrt{\pi}*  \exp(1/4)  *  \exp(-(Y-1))} =  \exp(-1/4)  *  \exp(-Y^2+3Y-2) $
+
+$U\sim Unif[0,1]$,
+$Y \sim Exp(1)$
+
+
+В итоге получаем, что,
+
+если $U\leq \exp(-1/4)  *  \exp(-Y^2+3Y-2)$,  принимаем, 
+
+если $U > \exp(-1/4)  *  \exp(-Y^2+3Y-2) $,  отвергаем.
+
+\subsection*{Задача 6}
+
+Пусть
+
+$U_1, Y_1,  U_2, Y_2, ... , i=1,2,...$
+
+$U_i \sim  Unif [0;1], i=1,2,... $
+
+$Y_i \sim Gamma(2,1), i=1,2,...$
+
+$\tau = \min \{ k\geq 1: Y_k \leq \ln 2 \}, $
+
+$X = Y_{\tau}.  $
+
+Построим закон распределения $X$.
+
+
+Выборка с отклонением $\forall x \in \mathbb{R}, c\geq 1, f(x)\leq c*g(x)  $
+
+$f(y) = \dfrac{y*\exp(-y) }{\Gamma(2) }, y>0  $
+
+$2*U_k * q(Y_k) \leq \rho(Y_k)$, 
+
+$q(Y_k) = \dfrac{1}{\Gamma(2)} * y*\exp(-y)  *  \mathbb{I}_{\{Y_k \geq 0 \}} $
+
+Неравенство
+
+$2U_k  * \dfrac{1}{\Gamma(2)} * Y_k*\exp(-Y_k)  *  \mathbb{I}_{\{Y_k \geq 0 \}} \leq  2* \dfrac{1}{\Gamma(2)}  * Y_k *  \exp(-Y_k)  *  \mathbb{I}_{\{ 0\leq Y_k  \leq  \ln 2 \}}$
+
+верно, тогда и только тогда, когда $Y_k \in [0;\ln2]$.
+Тогда $\tau = \min \{ k\geq 1: Y_k \leq \ln 2 \} $  это минимальный номер при котором $2*U_k * q(Y_k) \leq \rho(Y_k)$ верно. 
+
+
+$\rho(x) =2* \dfrac{1}{\Gamma(2)}  * x *  \exp(-x)  *  \mathbb{I}_{\{ 0\leq x\leq \ln 2 \}}  \leq    2* \dfrac{1}{\Gamma(2)}  * x *  \exp(-x)  *  \mathbb{I}_{\{  x\geq 0 \}} = 2* q(x)$
+
+$q(x) \sim Gamma(2,1) $
+ 
+
+Тогда из метода выборки с отклонением следует, что $X=Y_{\tau} \sim \rho(x)$,
+
+$\rho(x) =  2* \dfrac{1}{\Gamma(2)}  * y *  \exp(-y)  *  \mathbb{I}_{\{ 0\leq y \leq \ln 2 \}}  $
+
+
+
+
+
+
+\subsection*{Задача 7}
+
+$X\sim N(0,\sigma^2)$, $Y = \exp(X)$
+
+$f(x) = \dfrac{1}{\sqrt{2\pi \sigma^2}} *\exp(\dfrac{-x^2}{2\sigma^2})$
+
+(a) $F_Y(y): F_Y(y) = 0$ if $y\leq0$
+
+$f_Y(y) = 0, y\leq 0$
+
+Если  $y>0$, 
+
+$F_Y(y) = P(y\leq y ) = P(\exp(X) \leq y )  = P(X \leq \ln(y) ) $
+ 
+$F_Y(y) = \int_{\-\infty}^{\ln(y)} f(x)dx $
+
+
+$f_Y(y) = \dfrac{d}{dy} \int_{-\infty}^{\ln(y)} \dfrac{1}{\sqrt{2\pi \sigma^2}} *\exp(\dfrac{-x^2}{2\sigma^2})dx =\dfrac{1}{y} * \dfrac{1}{\sqrt{2\pi \sigma^2}} *\exp(\dfrac{-(\ln( y))^2}{2\sigma^2})dx 
+$
+
+$y=\exp(X)=f(x)$
+
+(б)
+
+$p(x) = \dfrac{1}{\sqrt{2\pi \sigma^2}} *\exp(\dfrac{-x^2}{2\sigma^2})$
+
+$E(Y) = E(f(x)) = E(\exp(X) ) =  \int_{-\infty}^{\infty} p(x) f(x) dx    = \int_{-\infty}^{\infty} \dfrac{1}{\sqrt{2\pi \sigma^2}} *\exp(\dfrac{-x^2}{2\sigma^2}) * \exp(X) dx = \exp(\sigma^2/2)   $
+
+$E(Y^2) = E(f^2(x)) = E((\exp(X))^2 ) =  \int_{-\infty}^{\infty} p(x) f(x)^2 dx     = \int_{-\infty}^{\infty} \dfrac{1}{\sqrt{2\pi \sigma^2}} *\exp(\dfrac{-x^2}{2\sigma^2}) * (\exp(X))^2 dx = \exp(2\sigma^2)   $
+
+$Var(Y) =E(Y^2) - (E(Y))^2 =\exp(2\sigma^2)  - \exp(\sigma^2)    $
+
+
+(в)
+
+Пусть $U_1, ..., U_n \sim Unif[0,1]$. Построим оценку числа  $e$: 
+
+$S_n = \sum_{i=1}^n U_i$
+
+$N = \min\{n:S_n>1\}$
+
+$P(N=n) = P((S_n>1)\&(S_{n-1} < 1) ) =  P(S_{n-1} < 1) -  P(S_n<1 )  $
+
+$P(S_n<1 )  = \dfrac{1}{n!}$
+ 
+$P(N=n) = \dfrac{1}{(n-1)!} - \dfrac{1}{n!} = \dfrac{n-1}{n!} $
+
+
+$E(N) = \sum_{n=2}^{\infty}   n*P(N=n) =  \sum_{n=2}^{\infty}   \dfrac{n(n-1)}{n!} =  \sum_{n=2}^{\infty}   \dfrac{1}{(n-2)!} =  \sum_{n=0}^{\infty}   \dfrac{1}{n!}  = e $
+
+ 
+\subsection*{Задача 8}
+
+$f(x) = \lambda/2* \exp(\lambda|x-\theta|)$
+
+(a) 
+
+
+$\theta = 0, \lambda = 1  $
+
+$f(x) = \lambda/2 * \exp(-|x|), x \in \mathbb{R}$
+
+$Y=F(x) = \int_{-\infty}^{x} 1/2* \exp(-|u) du = \begin{cases}
+1/2*\exp(x), x<0\\
+1-1/2*\exp(-x), x\geq0\\
+\end{cases}$
+
+
+Смоделируем $X$ от $U\sim Unif[0,1]$. 
+
+$U = F(x)$
+
+Если  $x<0$, $U=1/2*\exp(X)$ $\Rightarrow$  $X=\ln(2U)$.
+
+Для всех значений $U$, $\ln(2U)<0$ $\Rightarrow$  $U<1/2$.
+
+Если  $x\geq0$, $U=1-1/2*\exp(-X)$ $\Rightarrow$  $X=-\ln(1-U)$. 
+
+Для всех значений $U$, $-\ln(1-U)\geq 0$ $\Rightarrow$  $U\geq1/2$.
+
+(б)
+
+$f(x) = \lambda/2* \exp(\lambda|x-\theta|) = \lambda/2* \begin{cases} 
+\exp(\lambda(x-\theta)), &x<\theta\\
+\exp(-\lambda(x-\theta)), &x\geq\theta \end{cases} $
+
+$F(x) = \int_{-\infty}^{x} f(u)du = \begin{cases} 
+1/2* \exp(\lambda(x-\theta)), &x<\theta\\
+1-1/2*\exp(-\lambda(x-\theta)), &x\geq\theta \end{cases} $ 
+
+Смоделируем $X$ от  $U\sim Unif[0,1]$.
+
+$U=F(x)$, $X=F^{-1}(U)$
+
+Если $x<\theta$, $U=1/2*\exp(\lambda (X-\theta))$ $\Rightarrow$  $X=\ln(2U)/\lambda +\theta$. 
+
+Для всех значений $U$, $\ln(2U)/\lambda +\theta<0$ $\Rightarrow$  $U<1/2$.
+
+Если  $x\geq0$, $U=1-1/2*\exp(-\lambda (X-\theta))$ $\Rightarrow$  $X=-\ln2(1-U)/\lambda +\theta$. 
+
+Для всех значений $U$, $-\ln2(1-U)/\lambda +\theta$ $\Rightarrow$  $U\geq1/2$.
+
+
+(в)
+
+$E[X] = \int_{-\infty}^{\infty} xf(x)dX = \lambda/2 * \int_{-\infty}^{\infty}   X \exp (\lambda(X-\theta))dX = 
+\lambda/2 *1/\lambda * X \exp(\lambda(X-\theta))  \biggr\rvert_{\infty}^{\theta}-  \lambda/2 *1/\lambda \int_{-\infty}^{\theta} \exp(\lambda(X-\theta))dX -   
+\lambda/2 *1/\lambda *X \exp(-\lambda(X-\theta))  \biggr\rvert^{\infty}_{\theta}+
+\lambda/2 *1/\lambda \int_{\theta}^{\infty} \exp(-\lambda(X-\theta))dX  = \lambda/2 - 1/(2\lambda) * \exp(\lambda(X-\theta) ) \biggr\rvert_{\infty}^{\theta} +   \lambda/2 - 1/(2\lambda) * \exp(-\lambda(X-\theta) ) \biggr\rvert^{\infty}_{\theta} = \theta - 1/(2\lambda) +1/(2\lambda) $ $=\theta
+$
+
+\subsection*{Задача 9}
+
+$f(x)=\dfrac{1}{4} \left( \dfrac{1}{\sqrt{x}} +  \dfrac{1}{\sqrt{1-x}}
+  \right) \mathbb{I}_{\{x\in [0;1]\}} $
+
+$F(x)=\dfrac{1}{2} ( \sqrt{x} +  \sqrt{1-x} +1) = P(X\leq x)  = \dfrac{1}{2} P(U\leq \sqrt{x}) + \dfrac{1}{2} P(U\leq 1- \sqrt{1-x})   = 
+ \dfrac{1}{2} P(U^2\leq x) + \dfrac{1}{2} P(\sqrt{1-x}\leq 1-U ) =
+  \dfrac{1}{2} P(U^2\leq x)  + \dfrac{1}{2} P(1-x\leq (1-U)^2 ) = 
+    \dfrac{1}{2} P(U^2\leq x) +  \dfrac{1}{2} P(2U-U^2\leq x)
+ $
+ 
+ То есть эта случайная величина 
+ $X = \begin{cases}
+U, \quad \quad \quad  & \text{w.p.1/2 (если орел)} \\
+2U-U^2, \quad   &\text{w.p.1/2 (если решка)} \\
+\end{cases}$
+  
+  
+  \subsection*{Задача 10}
+  
+  Пусть $U\sim Unif[0,1]$. Смоделируем распределение Коши $X\sim Cauchy (x_0,\gamma)$ методом обращения: 
+  
+  $f(k) = \dfrac{1}{\pi \gamma \left(1+\left( \dfrac{x-x_0}{\gamma}\right) ^2\right )}$
+  
+  $F(k)= 1/2 + \dfrac{1}{\pi} \arctan \left( \dfrac{x-x_0}{\gamma}\right) 
+  $
+  
+  $F^{-1}(u)=x_0 + \gamma *  \tan(\pi ( u-1/2))
+  $
+  
+ 
+  $X = x_0 + \gamma * \tan(\pi(U-1/2)) \sim Cauchy (x_0,\gamma)$	
+
+ 
+  
+  
+  
+
+
+
+\end{document}
