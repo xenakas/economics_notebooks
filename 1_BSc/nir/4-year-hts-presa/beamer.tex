@@ -1,0 +1,556 @@
+%!TEX TS-program = xelatex
+% Исходная версия шаблона --- 
+% https://www.writelatex.com/coursera/latex/5.1
+\documentclass[c, dvipsnames]{beamer}  % [t], [c], или [b] --- вертикальное 
+%\documentclass[handout, dvipsnames, c]{beamer} % Раздаточный материал (на слайдах всё сразу)
+\input{pre}
+\title[Прогнозирование иерархических рядов ]{ПРОГНОЗИРОВАНИЕ ИЕРАРХИЧЕСКИХ  \\
+	ВРЕМЕННЫХ РЯДОВ}
+%\subtitle{Защита выпускной квалификационной работы}
+
+
+ \usepackage{amsmath}
+
+\author[Касьянова Ксения]{Касьянова Ксения \\ \smallskip \scriptsize ЭО-15-01 }
+
+\superviser{Демешев Борис Борисович}
+
+%\author[Имя автора]{Имя автора \\ \smallskip \scriptsize \href{mailto:author@ranepa.ru}{author@ranepa.ru} \\ \smallskip  \href{http://ranepa.ru}{http://ranepa.ru} }
+
+\institute[РАНХиГС]{ \uppercase{
+  Российская Академия Народного Хозяйства и  \\ Государственной Службы при Президенте Российской Федерации}}
+\date{}
+
+
+\titlegraphic{\includegraphics[scale=0.5]{logo1}}
+\titlegraphicii{\includegraphics[scale=0.5]{logo2}}
+
+\begin{document}
+
+\frame[plain]{\titlepage}	% Титульный слайд
+
+
+\begin{frame}[shrink=5]
+\frametitle{Основные гипотезы} 
+%\framesubtitle{ВРЕМЕННЫЕ РЯДЫ С ИЕРАРХИЧЕСКОЙ СТРУКТУРОЙ}
+
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.8\linewidth]{Screenshot51}
+	\caption{Иерархическая структура временных рядов, необходимых для анализа}
+	\label{fig:screenshot51}
+\end{figure}
+
+
+
+\end{frame}
+
+\begin{frame}[shrink=5]
+\frametitle{Анализ предметной отрасли} 
+
+
+	
+	\begin{table} \small\centering\setlength{\extrarowheight}{0.25em}
+		
+		\begin{tabular}{   >{\centering\footnotesize}p{5.5em} 
+				>{\centering\footnotesize}p{8em}
+				>{\centering\footnotesize}p{5.5em} 
+				>{\centering\footnotesize\arraybackslash}p{12em} }\hline
+			
+			
+			
+			Авторы, год & Название работы & Источник & Результат \\\hline 
+			M. Cobb (2017) & Joint Forecast Combination of Macroeconomic Aggregates and Their Components  & MPRA Paper from University Library of Munich & Использование оптимальной комбинации прогнозов дает более точные прогнозы агрегированного ряда, по сравнению с суммой прогнозов каждого ряда по отдельности. \\
+			R. Hyndman et al. (2010) & Optimal combination forecasts for hierarchical time series  & Computational Statistics \& Data Analysis & Корректировка прогнозов с помощью OLS  позоволяет сохранить иерархическую структуру рядов \\
+			Justin L. Tobias (2001) & Forecasting output growth rates and median output growth rates: a hierarchical Bayesian approach  & Journal of Forecasting & Прогнозы можно улучшить за счет  стягивания оценок коэффициентов для нижних рядов к групповым оценкам.\\\hline
+		\end{tabular}
+	\end{table}
+
+
+\end{frame}
+
+
+
+\begin{frame}[shrink=3]
+\frametitle{Цели и задачи} 
+
+
+	\begin{block}{Актуальность:}
+	\begin{itemize}
+		
+		\item  необходимость     прогнозирования иерархических рядов в микроэкономике,     макроэкономике, страховании, демографии.  
+		%		\item  выявление факторов, позволяющих улучшить прогнозы агрегированного временного ряда. 
+		
+	\end{itemize}
+\end{block}
+
+	\begin{block}{Цель:}
+	\begin{itemize}
+
+		\item  сравнение моделей, учитывающих иерархическую структуру данных.
+%		\item  выявление факторов, позволяющих улучшить прогнозы агрегированного временного ряда. 
+		
+	\end{itemize}
+		
+	\end{block}
+
+	\begin{block}{Задачи:}
+	\begin{itemize}
+
+\item  сбор данных;
+\item  выбор моделей;
+\item  прогнозирование рядов второго и третьего уровня;
+\item  сравнение суммы и оптимальной комбинации прогнозов.
+%\item  сравнение прогнозов по рядам второго и третьего уровня. 
+
+
+	\end{itemize}
+
+
+
+
+	
+\end{block}
+\end{frame}
+
+
+
+\begin{frame}[shrink=5]
+\frametitle{Сбор данных с иерархической структурой} 
+
+% Please add the following required packages to your document preamble:
+% \usepackage{multirow}
+		
+\begin{table}[]
+	
+	\small\centering\setlength{\extrarowheight}{0.25em}
+	
+	\begin{tabular}{   >{\centering\footnotesize}p{8em} 
+			>{\centering\footnotesize}p{4em} 
+			>{\centering\footnotesize}p{4em} 
+			>{\centering\footnotesize}p{4em} 
+			>{\centering\footnotesize\arraybackslash}p{6em} }\hline
+
+		
+		
+\multirow{2}{*}{\begin{tabular}[c]{@{}c@{}}Агрегированный\\ ряд\end{tabular}} & \multicolumn{3}{c}{Ряды второго уровня} & \multirow{2}{*}{\begin{tabular}[c]{@{}c@{}}Число рядов \\ третьего уровня\end{tabular}} \\
+& по регионам & по типам & по кластерам &  \\\hline
+ВВП ЕС & 28 & 10 & 25 & 280 \\
+ВВП США & 50 & 21 & 25 & 1050 \\
+ЕП РФ & 80 & 4 & 25 & 320\\\hline
+
+	\end{tabular}
+\end{table}
+
+
+\begin{table}[]
+	
+	\small\centering\setlength{\extrarowheight}{0.25em}
+	
+	
+	
+	\begin{tabular}{   >{\centering\footnotesize}p{8em} 
+			>{\centering\footnotesize}p{5em} 
+			>{\centering\footnotesize}p{5em} 
+			>{\centering\footnotesize}p{4em} 
+			>{\centering\footnotesize\arraybackslash}p{4em} }\hline
+		
+		\multirow{2}{*}{\begin{tabular}[c]{@{}c@{}}Агрегированный\\ ряд\end{tabular}} & \multirow{2}{*}{Сезонность} & \multirow{2}{*}{\begin{tabular}[c]{@{}c@{}}Число\\ наблюдений\end{tabular}} & \multicolumn{2}{c}{Кросс-валидация} \\
+		&  &  & \begin{tabular}[c]{@{}c@{}}число\\ подвыборок\end{tabular} & \begin{tabular}[c]{@{}c@{}}ширина\\ окна\end{tabular} \\\hline
+		ВВП ЕС & 4 & 75 & 6 & 48 \\
+		ВВП США & 4 & 54 & 6 & 28 \\
+		ЕП РФ & 12 & 157 & 5 & 84\\\hline
+	\end{tabular}
+\end{table}
+
+
+
+\end{frame}
+
+
+\begin{frame}[shrink=5]
+\frametitle{Сравнение суммы и оптимальной комбинации } 
+\framesubtitle{Визуализация  месячных  временных рядов   }
+
+\vfil
+\hfil\hfil\includegraphics[height=6cm]{screenshot066}\hfil\hfil
+\includegraphics[height=6cm]{screenshot067}\newline
+\null\hfil\hfil\makebox[5cm]{Три уровня агрегации}
+\hfil\hfil\makebox[5cm]{Группировка по типам }
+\end{frame}
+
+
+% Please add the following required packages to your document preamble:
+% \usepackage{multirow}
+
+
+
+
+%
+%\begin{frame}[shrink=5]
+%\frametitle{\insertsection} 
+%\framesubtitle{\insertsubsection}
+%	\hfil\hfil\includegraphics[width=5cm]{screenshot016}\newline
+%	\null\hfil\hfil\makebox[5cm]{ВВП квартальный (производственный метод):}\newline
+%	\vfil
+%	\hfil\hfil\includegraphics[width=5cm]{screenshot017}\hfil\hfil
+%	\includegraphics[width=5cm]{screenshot018}\newline
+%	\null\hfil\hfil\makebox[5cm]{ВВП квартальный}
+%	\hfil\hfil\makebox[5cm]{Разница (не более 0.00006 \%)}
+%\end{frame}
+%
+%
+
+
+
+
+\begin{frame}[shrink=5]
+\frametitle{Выбор моделей} 
+\begin{table}[]
+\caption{Параметры моделей}
+ \small\centering\setlength{\extrarowheight}{0.25em}	
+	\begin{tabular}{   >{\centering\footnotesize}p{3em} 
+			>{\centering\footnotesize}p{9.5em}
+			>{\centering\footnotesize}p{3em} 
+			>{\centering\footnotesize}p{4em} 
+			>{\centering\footnotesize}p{4em} 			
+			>{\centering\footnotesize}p{3em} 
+			>{\centering\footnotesize\arraybackslash}p{4em} }\hline
+		
+		
+		
+		&                                                                                     & \multicolumn{2}{c}{ Квартальные} &  Сезонно \\ сглаженные & \multicolumn{2}{c}{ Месячные}    \\\hline
+		&                                                                                     & $(p,d,q)$    & $(P,D,Q)_{4}$    & $(p,d,q)$          & $(p,d,q)$     & $(P,D,Q)_{12}$  \\\hline
+		AR    &с линейным трендом,\\малым числом лагов& $(2,0,0)$    & $(1,0,0)$        & $(2,0,0)$  & $(2,0,0)$     & $(1,0,0)$       \\
+		AR    & с линейным трендом                                                                  & $(3,0,0)$    & $(2,0,0)$        & $(4,0,0)$  & $(11,0,0)$    & $(2,0,0)$       \\
+		AR    & с квадратичным трендом                                                              & $(3,0,0)$    & $(2,0,0)$        & $(4,0,0)$  & $(11,0,0)$    & $(2,0,0)$       \\
+		AR    & интегированная                                                                      & $(3,1,0)$    & $(2,1,0)$        & $(4,1,0)$  & $(4,0,0)$     & $(1,1,0)$       \\
+		ARMA  & с линейным трендом                                                                  & $(3,0,1)$    & $(2,0,1)$        & $(4,0,1)$  & $(4,0,1)$     & $(1,0,1)$       \\
+		ARIMA &                                                                                     & $(3,1,1)$    & $(2,1,1)$        & $(4,1,1)$  & $(4,1,1)$     & $(1,1,1)$       \\\hline
+		ETS   & $(E,T,S)=$                                                                          & \multicolumn{2}{c}{$(M,M,M)$}   & $(A,A,A)$          & \multicolumn{2}{c}{$(A,Ad,A) $} \\\hline
+		TBATS & $trend =$                                                                           & \multicolumn{2}{c}{$A$}         & $A$                & \multicolumn{2}{c}{$Ad$} \\\hline       
+	\end{tabular}
+
+	\
+
+$(p,d,q)$ -- параметры для ARIMA модели, $(P,D,Q)_{m}$ -- параметры для SARIMA модели с периодичностью $m$, $A$ - аддитивный, $Ad$ - аддитивный демпфированный, $M$ - мультипликативный. 
+
+
+\end{table}
+
+
+\end{frame}
+
+
+
+
+\begin{frame}[shrink=5]
+\frametitle{Сравнение суммы и оптимальной комбинации } 
+\framesubtitle{Оптимальная комбинация прогнозов}
+
+\begin{equation}\label{key123}
+\begin{bmatrix}
+y_{t} \\
+y_{1, t} \\
+y_{2, t} \\
+... \\
+y_{i, t} \\
+y_{11, t} \\
+y_{12, t} \\
+y_{13, t} \\
+y_{21, t} \\
+y_{22, t} \\
+y_{23, t} \\
+
+... \\
+y_{ij-2, t} \\
+y_{ij-1, t} \\
+y_{ij, t}
+\end{bmatrix}
+=
+\begin{bmatrix}
+1& 1 &1& 1& 1& 1& ... &1& 1& 1 \\
+1 &1& 1& 0& 0& 0& ... &0 &0 &0  \\
+0 &0 &0 &1& 1& 1& ... &0 &0 &0  \\
+0& 0& 0& 0& 0& 0& ...&0 &0 &0 \\ 
+0& 0& 0& 0& 0& 0& ...& 1& 1& 1 \\
+1 &0 &0& 0& 0& 0& ...& 0& 0& 0 \\
+0 &1 &0& 0& 0& 0& ...& 0& 0& 0 \\
+0 &0 &1& 0& 0& 0& ...& 0& 0& 0 \\
+0 &0 &0& 1& 0& 0& ...& 0& 0& 0 \\
+0 &0 &0& 0& 1& 0& ...& 0& 0& 0 \\
+0 &0 &0& 0& 0& 1& ...& 0& 0& 0 \\
+0& 0& 0& 0& 0& 0& ...&0 &0 &0  \\ 
+0 &0 &0& 0& 0& 0& ...& 1& 0& 0 \\
+0 &0 &0& 0& 0& 0& ...& 0& 1& 0 \\
+0 &0 &0& 0& 0& 0& ...& 0& 0& 1 
+\end{bmatrix}
+\begin{bmatrix}
+y_{11, t} \\
+y_{12, t} \\
+y_{13, t} \\
+y_{21, t} \\
+y_{22, t} \\
+y_{23, t} \\
+
+... \\
+y_{ij-2, t} \\
+y_{ij-1, t} \\
+y_{ij, t}
+\end{bmatrix}
+\end{equation}
+
+\end{frame}
+
+
+\begin{frame}[shrink=5]
+\frametitle{Сравнение суммы и оптимальной комбинации } 
+\framesubtitle{Оптимальная комбинация прогнозов}
+
+
+\begin{equation}\label{key}
+y_t  = S b_t ,
+\end{equation}
+
+\noindent
+где $y_t$ -- вектор всех наблюдений на всех уровнях иерархии в момент времени $t$, $S$  -- суммирующая матрица
+$ b_t $ -- вектор всех наблюдений на самом нижнем уровне иерархии в момент времени $t$
+
+
+
+	\begin{block}{Невзвешенная сумма:}
+\begin{equation}\label{key}
+\tilde{y}_h = S \hat{y}_{K,h}   ,
+\end{equation}
+\end{block}
+\begin{block}{OLS-корректировка:}
+\begin{equation}\label{abc}
+\hat{y}_h = S \beta_h + e_h  ,
+\end{equation}
+\begin{equation}\label{key555}
+\tilde{y}_h
+= S \hat{\beta}_h  = S ( S'  S )^{-1}  S'    \hat{y}_h .
+\end{equation}
+где $\tilde{y}_h$  -- собранные с помощью суммирования прогнозы рядов уровней $1...K-1$  и базовые прогнозы $\hat{y}_{K,h}$. 
+
+
+\end{block}
+
+
+\end{frame}
+
+
+
+
+
+
+
+
+
+\begin{frame}[shrink=5]
+\frametitle{Сравнение суммы и оптимальной комбинации } 
+\framesubtitle{Процентное изменение RMSE для квартальных рядов}
+	
+	\vfil
+	\hfil\hfil\includegraphics[height=6.5cm]{screenshot056}\hfil\hfil
+	\includegraphics[height=6.5cm]{screenshot059}\newline
+	\null\hfil\hfil\makebox[5cm]{Невзвешенная сумма}
+	\hfil\hfil\makebox[5cm]{OLS-корректировка}
+\end{frame}
+
+
+
+\begin{frame}[shrink=5]
+\frametitle{Сравнение суммы и оптимальной комбинации } 
+\framesubtitle{Процентное изменение RMSE для квартальных сезонно-сглаженных  рядов}
+
+\vfil
+\hfil\hfil\includegraphics[height=6.5cm]{screenshot057}\hfil\hfil
+\includegraphics[height=6.5cm]{screenshot060}\newline
+\null\hfil\hfil\makebox[5cm]{Невзвешенная сумма}
+\hfil\hfil\makebox[5cm]{OLS-корректировка}
+\end{frame}
+
+
+\begin{frame}[shrink=5]
+\frametitle{Сравнение суммы и оптимальной комбинации } 
+\framesubtitle{Процентное изменение RMSE для месячных рядов}
+
+\vfil
+\hfil\hfil\includegraphics[height=6.5cm]{screenshot058}\hfil\hfil
+\includegraphics[height=6.5cm]{screenshot061}\newline
+\null\hfil\hfil\makebox[5cm]{Невзвешенная сумма}
+\hfil\hfil\makebox[5cm]{OLS-корректировка}
+\end{frame}
+
+
+
+
+
+
+\begin{frame}[shrink=3]
+\frametitle{Результат исследования} 
+
+
+\begin{block}{Результат:}
+
+\
+
+	\begin{itemize}
+
+
+\item  эффективность прогнозирования сильно варьируется в зависимости от характеристик наборов данных и их  рядов-компонент;
+
+\
+
+\item  корректировка прогнозов с помощью OLS позволяет избавиться от случайного накопления идиосинкразических ошибок;
+
+\
+
+\item  группировка рядов  улучшает прогнозы  по сравнению с прогнозами полученными по трехуровневой модели. 		
+
+
+	\end{itemize}
+	
+\end{block}
+
+
+
+
+\end{frame}
+
+
+
+
+
+
+
+
+\begin{frame}[c, plain]
+\begin{center}
+	
+	\bigskip
+	
+	
+	{\LARGE Спасибо за внимание!}
+	
+	\bigskip
+	
+	{\Large \inserttitle}
+	
+	\bigskip
+	
+	{\insertauthor} 
+	
+	\bigskip
+	
+	\bigskip\bigskip
+	
+	{\large \insertdate}
+\end{center}
+\end{frame}
+
+
+
+
+
+
+
+\begin{frame}[shrink=3]
+
+\frametitle{Актуальность и основные гипотезы} 
+
+
+
+
+\begin{block}{Актуальность:}
+	\begin{itemize}
+		
+		\item  точный прогноз экономических показателей – один из ключевых факторов принятия эффективных решений;
+		
+		\item  необходимость прогнозирования данных с иерархической структурой в микроэкономике, макроэкономике, страховании, демографии;
+		
+		\item  применение иерархических моделей на трех наборах данных с использованием кросс-валидации позволит получить более устойчивые выводы.
+		
+	\end{itemize}
+	
+\end{block}
+
+\begin{block}{Гипотезы:}
+	\begin{itemize}
+		\item  при группировке рядов, которые ведут себя одинаково, идиосинкразичесие ошибки внутри групп будут компенсировать друг друга, в то время общая динамика будет сохраняться;
+		
+		\item  подбор весов с помощью регрессии позволяет учесть более точные прогнозы с большим весом. 
+	\end{itemize}
+	
+\end{block}
+\end{frame}
+
+
+\begin{frame}[shrink=5]
+\frametitle{Сравнение суммы и оптимальной комбинации } 
+\framesubtitle{Визуализация  квартальных временных рядов   }
+
+\vfil
+\hfil\hfil\includegraphics[height=6cm]{screenshot062}\hfil\hfil
+\includegraphics[height=6cm]{screenshot063}\newline
+\null\hfil\hfil\makebox[5cm]{Три уровня агрегации}
+\hfil\hfil\makebox[5cm]{Группировка по отраслям }
+\end{frame}
+
+
+\begin{frame}[shrink=5]
+\frametitle{Сравнение суммы и оптимальной комбинации } 
+\framesubtitle{Визуализация  квартальных сезонно-сглаженных временных рядов   }
+
+\vfil
+\hfil\hfil\includegraphics[height=6cm]{screenshot064}\hfil\hfil
+\includegraphics[height=6cm]{screenshot065}\newline
+\null\hfil\hfil\makebox[5cm]{Три уровня агрегации}
+\hfil\hfil\makebox[5cm]{Группировка по отраслям }
+\end{frame}
+
+
+\begin{frame}[shrink=5]
+\frametitle{Сравнение прогнозов} 
+\framesubtitle{Временные ряды сгруппированные по евклидовой метрике}
+
+\vfil
+\hfil\hfil\includegraphics[height=4cm]{screenshot068}\hfil\hfil
+\includegraphics[height=4cm]{screenshot069}\hfil\hfil
+\includegraphics[height=4cm]{screenshot070}
+\newline
+\null\hfil\hfil\makebox[4cm]{ВВП ЕС}
+\hfil\hfil\makebox[4cm]{ВВП США}
+\hfil\hfil\makebox[4cm]{ЕП РФ}
+\end{frame}
+
+
+\begin{frame}[shrink=5]
+\frametitle{Сравнение суммы и оптимальной комбинации } 
+
+
+Квадратный корень из среднеквадратичной ошибки (root mean square error):
+\begin{equation}\label{key}
+RMSE = \sqrt{  \frac{1}{h} \sum_{i=1}^h(\hat{y}_{t+i|t}-y_{t+i})^2}
+\end{equation}
+
+
+Евклидова метрика:
+\begin{equation}\label{key}
+d(y_{i,t},y_{j,t}) = \sqrt{\sum^T_{t=1} (y_{i,t} - y_{j,t}  )^2 }, 
+\end{equation}
+
+Индекс силуэта для кластерной структуры: 
+\begin{equation}\label{key}
+SI = \frac{1}{N} \sum^N_{i=1} S_{y_i}=\frac{1}{N} \sum^N_{i=1} \dfrac{b_{pi}-a_{pi}}{\max(a_{pi}, b_{pi})},
+\end{equation}
+
+\end{frame}
+
+
+
+
+
+\end{document}

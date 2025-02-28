@@ -1,7 +1,0 @@
-\babel@toc {russian}{}
-\beamer@sectionintoc {1}{Динамика инвестиций в НИОКР:}{2}{0}{1}
-\beamer@sectionintoc {2}{Теоретическая модель}{4}{0}{2}
-\beamer@sectionintoc {3}{Эмпирическая модель}{12}{0}{3}
-\beamer@sectionintoc {4}{Выбор данных для оценки модели}{14}{0}{4}
-\beamer@sectionintoc {5}{Оценка модели}{16}{0}{5}
-\beamer@sectionintoc {6}{Результат}{18}{0}{6}
